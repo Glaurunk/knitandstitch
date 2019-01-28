@@ -1,0 +1,124 @@
+// KNIT & STITCH CUSTOM css
+
+// Fonts
+@font-face {
+  font-family: "Noteworthy", cursive;
+  src:url(/fonts/Noteworthy-Lt.woff);
+}
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+
+//////////// GLOBAL /////////////////////
+body {
+  background-color: black;
+}
+
+.wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: $body-bg;
+}
+
+//Hyperlinks
+
+.no-link-style {
+  text-decoration: none;
+}
+
+a {
+  color: $red;
+}
+
+ a:hover {
+   color: darken($red, 10%);
+ }
+
+
+
+
+
+
+
+
+///////// TYPOGRAPHY ///////////////////
+.fs-12 {
+  font-size: 1.2em;
+}
+
+.fs-14 {
+  font-size: 1.4em;
+}
+
+.fs-16 {
+  font-size: 1.6em;
+}
+
+.fs-18 {
+  font-size: 1.8em;
+}
+
+.fs-20 {
+  font-size: 2em;
+}
+
+.fs-25 {
+  font-size: 2.5em;
+}
+
+.fs-30 {
+  font-size: 3em;
+}
+////////////// HEADER ///////////////////
+
+.hidden-when-small {
+  display: none;
+}
+
+.handwriting {
+  font-family: $font-family-cursive;
+}
+
+.carousel-indicators li {
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+}
+
+.slider {
+  border-color: black;
+  border-style: solid;
+  border-width: 12px 0px 12px 0px;
+}
+
+
+
+
+
+
+
+
+
+//////////// MEDIA QUERIES ////////////////////
+
+@media screen and (min-width: 768px) {
+
+// Header
+  .logo-img {
+    height: 200px;
+  }
+
+  .hidden-when-large {
+    display: none;
+  }
+
+  .hidden-when-small {
+    display: flex;
+  }
+
+
+}

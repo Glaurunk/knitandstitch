@@ -10506,8 +10506,16 @@ body {
   background-color: #bfbbbb;
 }
 
-.no-link-style {
-  text-decoration: none;
+.hidden {
+  display: none;
+}
+
+.shown {
+  display: block;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
 }
 
 a {
@@ -10516,6 +10524,34 @@ a {
 
 a:hover {
   color: #660000;
+}
+
+.hidden-when-small {
+  display: none;
+}
+
+.body-grey {
+  background-color: #bfbbbb;
+}
+
+.button-grey {
+  background-color: #9f9999;
+}
+
+.red {
+  background-color: #990000;
+}
+
+.text-red {
+  color: #990000;
+}
+
+.fs-06 {
+  font-size: 0.6em;
+}
+
+.fs-08 {
+  font-size: 0.8em;
 }
 
 .fs-12 {
@@ -10546,8 +10582,8 @@ a:hover {
   font-size: 3em;
 }
 
-.hidden-when-small {
-  display: none;
+.ls-3 {
+  letter-spacing: 2px;
 }
 
 .handwriting {
@@ -10566,9 +10602,76 @@ a:hover {
   border-width: 12px 0px 12px 0px;
 }
 
+.but-fashion {
+  height: 120px;
+  width: 120px;
+  background-color: #9f9999;
+  border-radius: 12px;
+  background-image: url(/images/btn-fashion.png);
+}
+
+.but-self-care {
+  height: 120px;
+  width: 120px;
+  background-color: #9f9999;
+  border-radius: 12px;
+  background-image: url(/images/btn-self-care.png);
+}
+
+.but-house {
+  height: 120px;
+  width: 120px;
+  background-color: #9f9999;
+  border-radius: 12px;
+  background-image: url(/images/btn-house.png);
+}
+
+.but-novelties {
+  height: 120px;
+  width: 120px;
+  background-color: #9f9999;
+  border-radius: 12px;
+  background-image: url(/images/btn-novelties.png);
+}
+
+.hover-1:hover {
+  border: 2px solid #660000;
+  cursor: pointer;
+  color: #660000;
+}
+
+.fp-card {
+  background-color: inherit;
+  border-top: 2px solid #990000;
+  border-bottom: 2px solid #990000;
+}
+
+.p-card {
+  max-height: 200px;
+  overflow: hidden;
+  transition: 2s;
+}
+
+.fp-show {
+  max-height: 100%;
+  transition: 2s;
+}
+
+.btn-link {
+  color: #990000;
+  font-style: italic;
+  cursor: pointer;
+}
+
+.btn-link:hover {
+  color: #660000;
+  font-style: italic;
+  cursor: pointer;
+}
+
 @media screen and (min-width: 768px) {
   .logo-img {
-    height: 200px;
+    height: 150px;
   }
 
   .hidden-when-large {

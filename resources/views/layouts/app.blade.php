@@ -6,7 +6,7 @@
 
 @include('layouts.messages')
 
-@yield('content')
+  @yield('content')
 
 @include('layouts.footer')
 

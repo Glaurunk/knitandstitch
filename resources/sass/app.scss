@@ -24,10 +24,17 @@ body {
   background-color: $body-bg;
 }
 
-//Hyperlinks
+.hidden {
+  display: none;
+}
 
-.no-link-style {
-  text-decoration: none;
+.shown {
+  display: block;
+}
+
+//Hyperlinks
+.nav-link:hover {
+  text-decoration: underline;
 }
 
 a {
@@ -38,14 +45,37 @@ a {
    color: darken($red, 10%);
  }
 
+// Header
+ .hidden-when-small {
+   display: none;
+ }
 
+// BG Colors
+.body-grey   {
+  background-color: $body-bg;
+}
 
+.button-grey {
+  background-color: $red-grey;
+}
 
+.red {
+  background-color: $red;
+}
 
-
-
+.text-red {
+  color: $red;
+}
 
 ///////// TYPOGRAPHY ///////////////////
+.fs-06 {
+  font-size: 0.6em;
+}
+
+.fs-08 {
+  font-size: 0.8em;
+}
+
 .fs-12 {
   font-size: 1.2em;
 }
@@ -73,11 +103,13 @@ a {
 .fs-30 {
   font-size: 3em;
 }
-////////////// HEADER ///////////////////
 
-.hidden-when-small {
-  display: none;
+.ls-3 {
+  letter-spacing: 2px;
 }
+////////////// FRONT PAGE ///////////////////
+
+// carousel
 
 .handwriting {
   font-family: $font-family-cursive;
@@ -96,10 +128,78 @@ a {
 }
 
 
+// Buttons
+.but-fashion {
+  height: 120px;
+  width: 120px;
+  background-color: $red-grey;
+  border-radius: 12px;
+  background-image: url(/images/btn-fashion.png);
+}
+
+.but-self-care {
+  height: 120px;
+  width: 120px;
+  background-color: $red-grey;
+  border-radius: 12px;
+  background-image: url(/images/btn-self-care.png);
+}
+
+.but-house {
+  height: 120px;
+  width: 120px;
+  background-color: $red-grey;
+  border-radius: 12px;
+  background-image: url(/images/btn-house.png);
+}
+
+.but-novelties {
+  height: 120px;
+  width: 120px;
+  background-color: $red-grey;
+  border-radius: 12px;
+  background-image: url(/images/btn-novelties.png);
+}
+
+.hover-1:hover {
+  border: 2px solid darken($red, 10%);
+  cursor: pointer;
+  color: darken($red, 10%);
+}
+
+// Front-page card-columns
+
+.fp-card {
+  background-color: inherit;
+  border-top: 2px solid $red;
+  border-bottom: 2px solid $red;
+}
+
+.p-card {
+  max-height: 200px;
+  overflow: hidden;
+  transition: 2s;
+}
+
+.fp-show {
+  max-height: 100%;
+  transition: 2s;
+}
+
+.btn-link {
+  color: $red;
+  font-style: italic;
+  cursor: pointer;
+}
+
+.btn-link:hover {
+  color: darken($red, 10%);
+  font-style: italic;
+  cursor: pointer;
+}
 
 
-
-
+/////////// ABOUT //////////////
 
 
 
@@ -109,7 +209,7 @@ a {
 
 // Header
   .logo-img {
-    height: 200px;
+    height: 150px;
   }
 
   .hidden-when-large {

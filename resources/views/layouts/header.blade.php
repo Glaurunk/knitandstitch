@@ -9,6 +9,7 @@
 
         <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
         <script src="{{ mix('/js/app.js') }}"></script>
+        <script type="text/javascript" src="js/customJS.js"></script>
         <title>Knit & Stitch | @yield('title')</title>
 
     </head>

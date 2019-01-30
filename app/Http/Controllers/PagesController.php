@@ -10,4 +10,24 @@ class PagesController extends Controller
               {
                   return view('pages.home');
               }
+
+    public function about()
+              {
+                return view('pages.about');
+              }
+
+    public function contact()
+              {
+                return view('pages.contact');
+              }
+
+      public function policy()
+                {
+                  return view('pages.policy');
+                }
+
+      public function tou()
+                {
+                  return view('pages.tou');
+                }
 }

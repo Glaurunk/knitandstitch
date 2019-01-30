@@ -14,9 +14,10 @@
 
 // MAIN PAGES
 Route::get('/', 'PagesController@home');
-
-
-
+Route::get('/about', 'PagesController@about');
+Route::get('/contact', 'PagesController@contact');
+Route::get('/policy', 'PagesController@policy');
+Route::get('/tou', 'PagesController@tou');
 
 
 

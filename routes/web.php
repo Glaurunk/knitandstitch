@@ -19,8 +19,14 @@ Route::get('/contact', 'PagesController@contact');
 Route::get('/policy', 'PagesController@policy');
 Route::get('/tou', 'PagesController@tou');
 
-
-
+// RESOURCES
+Route::resource('posts', 'PostController');
+Route::resource('comments', 'CommentController');
+// POSTS specific queries
+Route::get('/fashion', 'PagesController@fashion')->name('fashion');
+Route::get('/self_care', 'PagesController@self_care')->name('self_care');
+Route::get('/my_house', 'PagesController@my_house')->name('my_house');
+Route::get('/inspiration', 'PagesController@inspiration')->name('inspiration');
 
 
 // AUTHENTICATION

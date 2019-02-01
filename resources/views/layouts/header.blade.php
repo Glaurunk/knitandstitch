@@ -9,7 +9,7 @@
 
         <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
         <script src="{{ mix('/js/app.js') }}"></script>
-        <script type="text/javascript" src="js/customJS.js"></script>
+        <script type="text/javascript" src="{{ url('/js/customJS.js') }}"></script>
         <title>Knit & Stitch | @yield('title')</title>
 
     </head>
@@ -32,19 +32,19 @@
                             <!-- Left Side Of Navbar -->
                             <ul class="navbar-nav mr-auto hidden-when-large text-center">
                               <li class="nav-item active">
-                                <a class="nav-link handwriting fs-12" href="#">home <span class="sr-only">(current)</span></a>
+                                <a class="nav-link handwriting fs-12" href="{{ url('/') }}">home <span class="sr-only">(current)</span></a>
                               </li>
                               <li class="nav-item active">
                                 <a class="nav-link handwriting fs-12" href="#">knits<span class="sr-only">(current)</span></a>
                               </li>
                               <li class="nav-item active">
-                                <a class="nav-link handwriting fs-12" href="#">stitces <span class="sr-only">(current)</span></a>
+                                <a class="nav-link handwriting fs-12" href="{{ url('/posts') }}">stitces <span class="sr-only">(current)</span></a>
                               </li>
                               <li class="nav-item active">
-                                <a class="nav-link handwriting fs-12" href="#">about me <span class="sr-only">(current)</span></a>
+                                <a class="nav-link handwriting fs-12" href="{{ url('/about') }}">about me <span class="sr-only">(current)</span></a>
                               </li>
                               <li class="nav-item active">
-                                <a class="nav-link handwriting fs-12" href="#">contact me <span class="sr-only">(current)</span></a>
+                                <a class="nav-link handwriting fs-12" href="{{ url('/contact') }}">contact me <span class="sr-only">(current)</span></a>
                               </li>
                               <li class="nav-item active">
                                 <a class="nav-link handwriting fs-12" href="#">instagram <span class="sr-only">(current)</span></a>
@@ -75,6 +75,8 @@
                                                onclick="event.preventDefault();
                                                              document.getElementById('logout-form').submit();">
                                                 {{ __('Logout') }}
+                                            </a>
+                                            <a class="dropdown-item" href="{{ route('posts.create') }}">Create new Stitch
                                             </a>
 
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

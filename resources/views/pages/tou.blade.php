@@ -12,14 +12,14 @@
 
 <p>Please read these Terms and Conditions ("Terms", "Terms and Conditions") carefully before using the https://www.knitandstitch.gr website (the "Service") operated by Knit and Stitch ("us", "we", or "our").</p>
 
-<p>Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms and our <a href="/policy">Privacy Policy</a>. These Terms apply to all visitors, users and others who access or use the Service.</p>
+<p>Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms and our <a href="{{ url('/policy') }}">Privacy Policy</a>. These Terms apply to all visitors, users and others who access or use the Service.</p>
 
 <p>By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of the terms then you may not access the Service.</p>
 
 
 <h2 class="py-3">Accounts</h2>
 
-<p>When you create an account with us, you must provide us information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of your account on our Service. The usage of the collected data is described in our <a href="/policy">Privacy Policy</a>. You are adviced to read it carefully.</p>
+<p>When you create an account with us, you must provide us information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of your account on our Service. The usage of the collected data is described in our <a href="{{ url('/policy') }}">Privacy Policy</a>. You are adviced to read it carefully.</p>
 
 <p>You are responsible for safeguarding the password that you use to access the Service and for any activities or actions under your password, whether your password is with our Service or a third-party service.</p>
 
@@ -105,6 +105,6 @@ Content is protected by Greek and international copyright laws. You may view and
 
 <h2 class="py-3">Contact Us</h2>
 
-<p>If you have any questions about these Terms, please <a href="/contact">contact us</a>.</p>
+<p>If you have any questions about these Terms, please <a href="{{ url('/contact') }}">contact us</a>.</p>
   </div>
 @endsection

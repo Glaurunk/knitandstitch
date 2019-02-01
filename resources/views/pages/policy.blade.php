@@ -15,7 +15,7 @@
 
   <p>This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.</p>
 
-  <p>We use your data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, terms used in this Privacy Policy have the same meanings as in our <a href="/tou">Terms and Conditions</a>.</p>
+  <p>We use your data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, terms used in this Privacy Policy have the same meanings as in our <a href="{{ url('/tou') }}">Terms and Conditions</a>.</p>
 
 
   <h2 class="py-3">Information Collection And Use</h2>
@@ -109,7 +109,7 @@
   <p>If you have any questions about this Privacy Policy, please contact us:</p>
     <ul>
       <li>By email: <a href="mailto:#">knitandstitch@gmail.com</a></li>
-      <li>By visiting the <a href="/contact">contact page</a> on our website.</li>
+      <li>By visiting the <a href="{{ url('/contact') }}">contact page</a> on our website.</li>
     </ul>
 </div>
 

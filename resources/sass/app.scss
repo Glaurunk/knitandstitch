@@ -198,10 +198,36 @@ a {
   cursor: pointer;
 }
 
+.hyphen {
+  hyphens: auto;
+}
+/////////// INDEX //////////////
 
-/////////// ABOUT //////////////
+// pagination
+.page-link {
+  background-color: inherit;
+  color: $red;
+  border: 1px solid $red;
+}
 
+.page-link:hover {
+  background-color: darken($red, 10%);;
+  color: white;
+  border: 1px solid $red;
+}
 
+.page-item.active .page-link {
+  background-color: $red;
+  color: white;
+  border: 1px solid $red;
+}
+
+.page-item.disabled .page-link {
+  background-color: inherit;
+  color: $red;
+  border: 1px solid $red;
+
+}
 
 //////////// MEDIA QUERIES ////////////////////
 

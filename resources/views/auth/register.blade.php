@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container pt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card fp-card">
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
@@ -60,14 +60,31 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
+                        <hr>
+                        <div class="row align-items-center">
+                          <div class="col-9">
+                              <p class="fs-08 mr-5 pt-3">Also subscribe me to your newsletter!</p>
+                          </div>
+                          <div class="col-3">
+                              <input id="has_subscription" type="checkbox" class="" name="has_subscription" value="subscribe">
+                          </div>
+                        </div>
+                        <div class="row align-items-center">
+                          <div class="col-9">
+                            <p class="fs-08 mr-5">I am either at least 18 years old or I have conscent from a legal guardian to register!</p>
+                          </div>
+                          <div class="col-3">
+                            <input id="adult" type="checkbox" class="" name="adult" required>
+                          </div>
+                        </div>
+                        <hr>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+
+                        <div class="form-group row mb-0 justify-content-center">
+                                <button type="submit" class="btn btn-danger">
                                     {{ __('Register') }}
                                 </button>
                             </div>
-                        </div>
                     </form>
                 </div>
             </div>

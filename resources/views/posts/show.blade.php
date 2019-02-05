@@ -10,7 +10,7 @@
         </div>
         <div class="col-md-8 col-sm-8">
               <h4 class="text-danger handwriting">{{ $post->title }}</h4>
-              <h6 class="font-italic pt-2 pb-3">category: <a href="#">{{ $post->category }}</a> | {{ $post->created_at->day }}/{{ $post->created_at->month }}/{{ $post->created_at->year }}</h6>
+              <h6 class="font-italic pt-2 pb-3">category: <a href="/{{ $post->category }}">{{ $post->category }}</a> | {{ $post->created_at->day }}/{{ $post->created_at->month }}/{{ $post->created_at->year }}</h6>
               {{-- <p>{{ $post->synopsis }}</p> --}}
               <p>{!! $post->body !!}</p>
         </div> <!-- here ends col -->
@@ -21,6 +21,6 @@
     </div> <!-- here ends card block -->
   </div> <!-- here ends card -->
 
-  @include('auth.buttons')
+  {{-- @include('auth.buttons') --}}
 
 @endsection

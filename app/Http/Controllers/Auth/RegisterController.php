@@ -52,6 +52,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'has_subscription' => [],
         ]);
     }
 
@@ -63,10 +64,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+
+        if (in_array('subscribe', $data))
+        {
+          return User::create([
+              'name' => $data['name'],
+              'email' => $data['email'],
+              'password' => Hash::make($data['password']),
+              'has_subscription' => true,
+            ]);
+        }
+          return User::create([
+              'name' => $data['name'],
+              'email' => $data['email'],
+              'password' => Hash::make($data['password']),
+              'has_subscription' => false,
+            ]);
     }
+
+
+
 }

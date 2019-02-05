@@ -68,7 +68,9 @@ class PostController extends Controller
           $post->category = $request->input('category');
           $post->save();
 
-          return redirect()->route('posts.show', [$post])->with('success', 'Stitch Created!');
+          return redirect()
+              ->route('posts.index', [$post])
+              ->with('success', 'Stitch Created!');
     }
 
 

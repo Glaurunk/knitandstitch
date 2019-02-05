@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <h1 class="handwriting py-5" id="top">{{ $category }}</h1>
+  <h1 class="handwriting py-5" id="top">category: {{ $category }}</h1>
 
   @if(count($posts) > 0)
 
@@ -17,8 +17,8 @@
                 </div>
                 <div class="col-md-8 col-sm-8">
                       <h4 class="handwriting"><a href="/posts/{{ $post->id }}">{{ $post->title }}</a></h4>
-                      {{-- <h6 class="font-italic pt-2 pb-3">Category: <a href="#">{{ $post->category }}</a> | {{ $post->created_at->day }}/{{ $post->created_at->month }}/{{ $post->created_at->year }}</h6> --}}
-                      <p>{{ $post->synopsis }}</p>
+                      <small class="font-italic pt-2 pb-3">{{ $post->created_at }}</small>
+                      <p class="mt-3">{{ $post->synopsis }}</p>
                 </div> <!-- here ends col -->
               </div> <!-- here ends row -->
             </div> <!-- here ends card-block -->

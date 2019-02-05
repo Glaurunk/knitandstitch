@@ -10,7 +10,7 @@
     </div>
     <div class="col align-self-center mr-5">
       <p class="text-center">Need more information about my handcrafts, or how to get them? Need personalized advice on some topic? Need clarifications about some obscure post? Feel free to ask!</p>
-      <p class="handwriting fs-20 text-center "><a href="mailto:#">marinaki@gmail.com</a></p>
+      <p class="handwriting fs-20 text-center "><a href="mailto:marin.mavrommati@gmail.com">marin.mavrommati@gmail.com</a></p>
     </div>
   </div>
 

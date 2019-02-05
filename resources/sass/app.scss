@@ -14,14 +14,15 @@
 
 
 //////////// GLOBAL /////////////////////
+
 body {
-  background-color: black;
+  background-color: $dark-brown;
 }
 
 .wrapper {
   max-width: 800px;
   margin: 0 auto;
-  background-color: $body-bg;
+  background-color: $moccha;
 }
 
 .hidden {
@@ -42,7 +43,7 @@ a {
 }
 
  a:hover {
-   color: darken($red, 10%);
+   color: $dark-brown;
  }
 
 // Header
@@ -51,12 +52,36 @@ a {
  }
 
 // BG Colors
-.body-grey   {
-  background-color: $body-bg;
+.dark-brown   {
+  background-color: $dark-brown;
 }
 
-.button-grey {
-  background-color: $red-grey;
+.text-dark-brown {
+  color: $dark-brown;
+}
+
+.moccha {
+  background-color: $moccha;
+}
+
+.text-moccha {
+  color: $moccha;
+}
+
+.crem {
+  background-color: $crem;
+}
+
+.text-crem {
+  color: $crem;
+}
+
+.light-grey {
+  background-color: $light-grey;
+}
+
+.text-light-grey {
+  color: $light-grey;
 }
 
 .red {
@@ -107,6 +132,10 @@ a {
 .ls-3 {
   letter-spacing: 2px;
 }
+
+h1,h2,h3,h4,h5,h6,p,small {
+  color: $dark-brown;
+}
 ////////////// FRONT PAGE ///////////////////
 
 // carousel
@@ -122,7 +151,7 @@ a {
 }
 
 .slider {
-  border-color: black;
+  border-color: $dark-brown;
   border-style: solid;
   border-width: 12px 0px 12px 0px;
 }
@@ -132,7 +161,7 @@ a {
 .but-fashion {
   height: 120px;
   width: 120px;
-  background-color: $red-grey;
+  background-color: $crem;
   border-radius: 12px;
   background-image: url(/images/btn-fashion.png);
 }
@@ -140,7 +169,7 @@ a {
 .but-self-care {
   height: 120px;
   width: 120px;
-  background-color: $red-grey;
+  background-color: $crem;
   border-radius: 12px;
   background-image: url(/images/btn-self-care.png);
 }
@@ -148,7 +177,7 @@ a {
 .but-house {
   height: 120px;
   width: 120px;
-  background-color: $red-grey;
+  background-color: $crem;
   border-radius: 12px;
   background-image: url(/images/btn-house.png);
 }
@@ -156,23 +185,23 @@ a {
 .but-novelties {
   height: 120px;
   width: 120px;
-  background-color: $red-grey;
+  background-color: $crem;
   border-radius: 12px;
   background-image: url(/images/btn-novelties.png);
 }
 
 .hover-1:hover {
-  border: 2px solid darken($red, 10%);
+  border: 2px solid $dark-brown;
   cursor: pointer;
-  color: darken($red, 10%);
+  color: $dark-brown;
 }
 
 // Front-page card-columns
 
 .fp-card {
   background-color: inherit;
-  border-top: 2px solid $red;
-  border-bottom: 2px solid $red;
+  border-top: 2px solid $dark-brown;
+  border-bottom: 2px solid $dark-brown;
 }
 
 .p-card {
@@ -193,7 +222,7 @@ a {
 }
 
 .btn-link:hover {
-  color: darken($red, 10%);
+  color: $dark-brown;
   font-style: italic;
   cursor: pointer;
 }
@@ -211,14 +240,14 @@ a {
 }
 
 .page-link:hover {
-  background-color: darken($red, 10%);;
-  color: white;
+  background-color: $dark-brown;
+  color: $crem;
   border: 1px solid $red;
 }
 
 .page-item.active .page-link {
   background-color: $red;
-  color: white;
+  color: $crem;
   border: 1px solid $red;
 }
 

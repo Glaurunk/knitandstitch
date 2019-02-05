@@ -25,8 +25,16 @@ Route::resource('comments', 'CommentController');
 // POSTS specific queries
 Route::get('/fashion', 'PagesController@fashion')->name('fashion');
 Route::get('/self_care', 'PagesController@self_care')->name('self_care');
-Route::get('/my_house', 'PagesController@my_house')->name('my_house');
+Route::get('/my house', 'PagesController@my_house')->name('my_house');
 Route::get('/inspiration', 'PagesController@inspiration')->name('inspiration');
+
+//SEARCH
+Route::get('/search', 'PagesController@display_search' );
+Route::post('/search', 'PagesController@search');
+
+//DASHBOARD
+Route::get('/admin', 'PagesController@dashboard')->name('dashboard');
+Route::get('admin/index');
 
 
 // AUTHENTICATION

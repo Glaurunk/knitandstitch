@@ -53,7 +53,23 @@
                             </ul>
 
                             <!-- Right Side Of Navbar -->
+
+                            <!-- Search Form -->
+
                             <ul class="navbar-nav ml-auto text-left">
+                              <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle big" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search</a>
+                                  <div class="dropdown-menu">
+                                    <form action="{{ url('/search') }}" method="POST" role="search" class="dropdown-item form-inline my-2 my-lg-0">
+                                      {{ csrf_field() }}
+                                      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" required>
+                                      <button class="btn btn-outline-danger btn-sm my-2 my-sm-0" type="submit">Search</button>
+
+                                    </form>
+                                    <p class="fs-06 text-center">Εισάγετε τη λέξη-κλειδί, της αναζήτησης</p>
+                                  </div>
+                              </li>
+
                                 <!-- Authentication Links -->
                                 @guest
                                     <li class="nav-item">
@@ -76,7 +92,7 @@
                                                              document.getElementById('logout-form').submit();">
                                                 {{ __('Logout') }}
                                             </a>
-                                            <a class="dropdown-item" href="{{ route('posts.create') }}">Create new Stitch
+                                            <a class="dropdown-item" href="{{ route('dashboard') }}">Πίνακας Ελέγχου
                                             </a>
 
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -85,15 +101,7 @@
                                         </div> <!--here ends collapse navbar -->
                                     </li>
                                 @endguest
-                                    <li class="nav-item dropdown">
-                                      <a class="nav-link dropdown-toggle big" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search</a>
-                                        <div class="dropdown-menu">
-                                          <form class="dropdown-item form-inline my-2 my-lg-0">
-                                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                                            <button class="btn btn-outline-danger btn-sm my-2 my-sm-0" type="submit">Search</button>
-                                          </form>
-                                        </div>
-                                    </li>
+
                             </ul>
 
                         </div> <!--here ends collapse navbar -->

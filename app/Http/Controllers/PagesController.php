@@ -8,6 +8,8 @@ use DB;
 
 class PagesController extends Controller
 {
+
+// MAIN PAGES
     public function home()
               {
                 $posts = Post::orderBy('id', 'desc')->take(6)->get();
@@ -24,7 +26,9 @@ class PagesController extends Controller
                 return view('pages.contact');
               }
 
-      public function policy()
+
+// PRIVACY POLICY & TOU
+    public function policy()
                 {
                   return view('pages.policy');
                 }
@@ -34,6 +38,14 @@ class PagesController extends Controller
                   return view('pages.tou');
                 }
 
+// ADMIN
+      public function dashboard()
+                {
+                    return view('admin.dashboard');
+                }
+
+
+// CATEGORIES
       public function fashion()
                 {
                   $posts = DB::table('posts')
@@ -47,20 +59,74 @@ class PagesController extends Controller
 
       public function self_care()
                 {
+                  $posts = DB::table('posts')
+                      ->orderBy('id', 'desc')
+                      ->where('category', 'self-care')
+                      ->paginate(10);
                   return view('posts.posts_category')
-                  ->with('category', 'self-care');
+                      ->with('category', 'self-care')
+                      ->with('posts', $posts);
                 }
 
       public function my_house()
                 {
+                  $posts = DB::table('posts')
+                      ->orderBy('id', 'desc')
+                      ->where('category', 'my house')
+                      ->paginate(10);
                   return view('posts.posts_category')
-                  ->with('category', 'my house');
+                      ->with('category', 'my house')
+                      ->with('posts', $posts);
                 }
 
       public function inspiration()
                 {
+                  $posts = DB::table('posts')
+                      ->orderBy('id', 'desc')
+                      ->where('category', 'inspiration')
+                      ->paginate(10);
                   return view('posts.posts_category')
-                  ->with('category', 'inspiration');
+                      ->with('category', 'inspiration')
+                      ->with('posts', $posts);
+                }
+
+// SEARCH FUNCTIONALITY
+      public function display_search()
+                {
+                  return view('pages.search');
+                }
+
+      public function search(Request $request)
+                {
+// put search terms in an array and perform query
+                  $terms = explode(",", $request->input('search'));
+                  $query = Post::query();
+// run through search terms
+                  foreach ($terms as $term)
+                  {
+                        $query->orWhere('title', 'LIKE', '%' . trim($term) . '%')
+                              ->orWhere('body', 'LIKE', '%' . trim($term) . '%');
+                  }
+
+                  $posts = $query->get();
+
+                  if(count($posts) > 0)
+
+                  {
+                    return view('pages.search')
+                        ->with('posts', $posts)
+                        ->with('terms', $terms);
+                  }
+
+                  else
+
+                  {
+                    $keys = $request->input('search');
+                    return redirect('/search')
+                        ->with('keys', $keys)
+                        ->with('error', 'Δεν βρέθηκαν αποτελέσματα για την αναζήτηση: '.$keys);
+
+                  }
                 }
 
 }

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.dashboard')
 
 @section('content')
 <div class="container pt-5">
@@ -63,15 +63,15 @@
                         <hr>
                         <div class="row align-items-center">
                           <div class="col-9">
-                              <p class="fs-08 mr-5 pt-3">Also subscribe me to your newsletter!</p>
+                              <p class="fs-08 mr-5 pt-3">Θέλω να εγγραφώ και στο nesletter σας!</p>
                           </div>
                           <div class="col-3">
                               <input id="has_subscription" type="checkbox" class="" name="has_subscription" value="subscribe">
                           </div>
                         </div>
-                        <div class="row align-items-center">
-                          <div class="col-9">
-                            <p class="fs-08 mr-5">I am either at least 18 years old or I have conscent from a legal guardian to register!</p>
+                        <div class="row ">
+                          <div class="col-9 ">
+                            <p class="fs-08 mr-5">Είμαι άνω των 18 ή έχω γονική συναίνεση να εγγραφώ σε αυτόν τον ιστότοπο!</p>
                           </div>
                           <div class="col-3">
                             <input id="adult" type="checkbox" class="" name="adult" required>
@@ -81,7 +81,7 @@
 
 
                         <div class="form-group row mb-0 justify-content-center">
-                                <button type="submit" class="btn btn-danger">
+                                <button type="submit" class="btn btn-danger" value="Εγγραφή">
                                     {{ __('Register') }}
                                 </button>
                             </div>

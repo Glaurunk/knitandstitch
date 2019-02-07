@@ -10621,6 +10621,10 @@ small {
   color: #554843;
 }
 
+.list-style-no-style {
+  list-style-type: none;
+}
+
 .handwriting {
   font-family: "Noteworthy", cursive;
 }

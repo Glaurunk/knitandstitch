@@ -136,6 +136,10 @@ a {
 h1,h2,h3,h4,h5,h6,p,small {
   color: $dark-brown;
 }
+
+.list-style-no-style {
+  list-style-type: none;
+}
 ////////////// FRONT PAGE ///////////////////
 
 // carousel

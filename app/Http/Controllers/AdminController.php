@@ -6,9 +6,17 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-  public function index()
-  {
-    $posts = Post::orderBy('id', 'desc')->paginate(10);
-    return view('posts.index', compact('posts'));
-  }
+
+  public function __construct()
+          {
+             $this->middleware('auth');
+          }
+
+  public function dashboard()
+          {
+            return view('admin.profile');
+          }
+
+
+
 }

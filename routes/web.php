@@ -22,6 +22,9 @@ Route::get('/tou', 'PagesController@tou');
 // RESOURCES
 Route::resource('posts', 'PostController');
 Route::resource('comments', 'CommentController');
+Route::resource('photos', 'PhotoController');
+Route::resource('alboums', 'AlboumController');
+
 // POSTS specific queries
 Route::get('/fashion', 'PagesController@fashion')->name('fashion');
 Route::get('/self_care', 'PagesController@self_care')->name('self_care');
@@ -33,9 +36,7 @@ Route::get('/search', 'PagesController@display_search' );
 Route::post('/search', 'PagesController@search');
 
 //DASHBOARD
-Route::get('/admin', 'PagesController@dashboard')->name('dashboard');
-Route::get('admin/index');
-
+Route::get('/admin', 'AdminController@dashboard')->name('dashboard');
 
 // AUTHENTICATION
 Auth::routes();

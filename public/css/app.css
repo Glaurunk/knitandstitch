@@ -10738,6 +10738,10 @@ small {
   border: 1px solid #901818;
 }
 
+.thumbnail {
+  width: 200px;
+}
+
 @media screen and (min-width: 768px) {
   .logo-img {
     height: 150px;

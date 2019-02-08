@@ -7,7 +7,10 @@ use Carbon\Carbon;
 
 class Post extends Model
 {
-    protected $guarded = [];
+    protected $fillable =
+              [
+                  'title', 'body', 'cover_image', 'category', 'synopsis',
+              ];
 
     public function user()
               {

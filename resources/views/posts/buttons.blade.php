@@ -1,5 +1,5 @@
-@if(!Auth::guest())
-  @if(Auth::user()->id == $post->user_id)
+{{-- @if(!Auth::guest())
+  @if(Auth::user()->id == $post->user_id) --}}
     <div class="row pt-2 pb-5">
       <div class="col-auto">
         <a href="/posts/{{ $post->id }}/edit" class="btn btn-secondary btn-sm">Edit Post</a>
@@ -12,5 +12,5 @@
         </form>
       </div>
     </div>
-  @endif
-@endif
+  {{-- @endif
+@endif --}}

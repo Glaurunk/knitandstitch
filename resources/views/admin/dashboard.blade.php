@@ -35,25 +35,38 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownKnits">
           <a class="dropdown-item" href="#">Νέο Χειροτέχνημα</a>
-          <a class="dropdown-item" href="#">Edit Knits</a>
+          <a class="dropdown-item" href="#">Επεξεργασία Χειροτεχνημάτων</a>
         </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownStitches" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Stitches
+          Δημοσιεύματα
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownStitches">
-          <a class="dropdown-item" href="{{ url( '/posts/create') }}">Create new Stitch</a>
-          <a class="dropdown-item" href="#">Edit Stitches</a>
+          <a class="dropdown-item" href="{{ url( '/posts/create') }}">Νέο Δημοσίευμα</a>
+          <a class="dropdown-item" href="#">Επεξεργασία Δημοσιευμάτων</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownStitches" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Συλλογή Εικόνων
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownStitches">
+          {{-- <a class="dropdown-item" href="{{ url( '/photos/create') }}">Ανεβασμα Νέας Εικόνας</a> --}}
+          <a class="dropdown-item" data-toggle="modal" data-target="#exampleModal">
+            Ανέβασμα Νέας Εικόνας
+          </a>
+
+          <a class="dropdown-item" href="{{ url( '/photos') }}">Επεξεργασία Εικόνων</a>
         </div>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">
-          Comments
+          Σχόλια
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Users</a>
+        <a class="nav-link" href="#">Χρήστες</a>
       </li>
     </ul>
 @endif
@@ -102,5 +115,8 @@
                     <p class="pt-2">designed and created by <a href="https://deepseacoding.com">deepSeaCoding.com</a></p>
           </footer>
       </div> <!--here ends container -->
+<!--modal-->
+@include('photos.create')
+
     </body>
 </html>

@@ -38,12 +38,6 @@ class PagesController extends Controller
                   return view('pages.tou');
                 }
 
-// ADMIN
-      public function dashboard()
-                {
-                    return view('admin.dashboard');
-                }
-
 
 // CATEGORIES
       public function fashion()

@@ -6,7 +6,7 @@
 
   <div class="my-5">
 
-  <form class="form" action="/posts/{{ $post->id }}/edit" method="post" enctype="multipart/form-data">
+  <form class="form" action="/posts/{{ $post->id }}" method="post" enctype="multipart/form-data">
     {{ csrf_field() }}
     {{ method_field('PATCH') }}
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use DB;
+use Auth;
 
 class PagesController extends Controller
 {
@@ -12,8 +13,14 @@ class PagesController extends Controller
 // MAIN PAGES
     public function home()
               {
+                $not_in_carousels = DB::table('photos')
+                  ->where('in_carousel', 0)
+                  ->get();
+                $in_carousels = DB::table('photos')
+                  ->where('in_carousel', 1)
+                  ->get();
                 $posts = Post::orderBy('id', 'desc')->take(6)->get();
-                return view('pages.home', compact('posts'));
+                return view('pages.home', compact(['posts','not_in_carousels','in_carousels']));
               }
 
     public function about()

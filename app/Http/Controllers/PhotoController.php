@@ -13,13 +13,7 @@ class PhotoController extends Controller
 
     public function __construct()
     {
-         $this->middleware('auth');
-  //
-  //         $this->registerPolicies();
-  //
-  //         Gate::define('update-post', function ($user, $post) {
-  //       return $user->id == $post->user_id;
-  //
+        $this->middleware('admin');
     }
       /**
      * Display a listing of the resource.
@@ -28,7 +22,7 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        $photos = Photo::all();
+        $photos = Photo::paginate(20);
         return view ('photos.index', compact('photos'));
     }
 
@@ -51,7 +45,8 @@ class PhotoController extends Controller
     public function store(Request $request)
     {
       $this->validate($request, [
-          'photo' => ['image', 'required', 'max:2048', 'mimes:jpeg,jpg,png,gif']
+          'photo' => ['image', 'required', 'max:2048', 'mimes:jpeg,jpg,png,gif'],
+          'description' => 'nullable',
       ]);
 // Create new filename and Store to disk
           $image = $request->file('photo');
@@ -62,6 +57,7 @@ class PhotoController extends Controller
           $photo->title = $request->input('title');
           $photo->description = $request->input('description');
           $photo->photo = $filename;
+          $photo->in_carousel = 0;
 // put array of dimensions into a string
           $dimensions = getimagesize('storage/photos/'.$filename);
           $photo->dimensions = $dimensions[0].' πλάτος επί '.$dimensions[1].' υψος.';
@@ -70,7 +66,7 @@ class PhotoController extends Controller
           $photo->save();
 
           return redirect()
-              ->route('photos.index', [$photo])
+              ->back()
               ->with('success', 'Η εικόνα προστέθηκε στη Συλλογή!');
     }
 
@@ -137,7 +133,7 @@ class PhotoController extends Controller
         $path = 'public/photos/'.$photo->photo;
         Storage::delete($path);
         $photo->delete();
-        return redirect()->back()->with('success', 'Η εικόνα διαγράφηκε!');
+        return redirect('/admin/photos')->with('success', 'Η εικόνα διαγράφηκε!');
 
     }
 }

@@ -14,7 +14,7 @@ class AddPostColumnSynopsis extends Migration
     public function up()
     {
       Schema::table('posts', function (Blueprint $table) {
-          $table->text('synopsis');
+          $table->text('synopsis')->nullable();
         });
     }
 

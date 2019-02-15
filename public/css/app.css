@@ -10641,6 +10641,11 @@ small {
   border-width: 12px 0px 12px 0px;
 }
 
+.carousel {
+  width: 800px;
+  height: 400px;
+}
+
 .but-fashion {
   height: 120px;
   width: 120px;

@@ -7,42 +7,7 @@
 
 <!-- Knits Section with carousel -->
   <h1 class="handwriting text-center">latest knits!</h3>
-    <div class="row slider mt-4">
-      <div id="carouselExampleIndicators" class="carousel slide slider" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-        </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img class="d-block w-100" src="{{ url('images/demo1.jpg?auto=yes&bg=777&fg=555&text=First slide') }}" alt="First slide">
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="{{ url('images/demo2.jpg?auto=yes&bg=777&fg=555&text=Second slide') }}" alt="Second slide">
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="{{ url('images/demo3.jpg?auto=yes&bg=777&fg=555&text=Third slide') }}" alt="Third slide">
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="{{ url('images/demo4.jpg?auto=yes&bg=777&fg=555&text=Fourth slide') }}" alt="Fourth slide">
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="{{ url('images/demo5.jpg?auto=yes&bg=777&fg=555&text=Fifth slide') }}" alt="Fifth slide">
-        </div>
-      </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div> <!-- here ends carousel -->
-  </div> <!-- here ends row slider -->
+    @include('layouts.carousel')
 </div> <!-- here ends content -->
 
 <!-- Stitches Section -->
@@ -84,10 +49,10 @@
 
     <div class="card fp-card mb-2">
       <div class="card-block p-3 text-center">
-                <img src="/storage/cover_images/{{ $post->cover_image }}" alt="image" class="img-fluid rounded mb-3">
+                <img src="/storage/photos/{{ $post->cover_image }}" alt="image" class="img-fluid rounded mb-3">
                 <h5 class="text-center handwriting mb-3"><a href="/posts/{{ $post->id }}">{{ $post->title }}</a></h5>
                 <p class="font-italic fs-08 ">Category: <a href="#">{{ $post->category }}</a> | {{ $post->created_at->day }}/{{ $post->created_at->month }}/{{ $post->created_at->year }}</p>
-                <p class="text-justify hyphen fs-08">{{ $post->synopsis }}</p>
+                <p class="text-justify hyphen">{{ $post->synopsis }}</p>
       </div> <!-- here ends card-block -->
     </div> <!-- here ends card -->
 

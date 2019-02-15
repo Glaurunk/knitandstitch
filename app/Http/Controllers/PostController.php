@@ -5,24 +5,19 @@ namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Middleware\CheckRole;
+use App\Photo;
+use App\Comment;
+use DB;
+
 
 class PostController extends Controller
 {
 
-  // public function __construct()
-  //    {
-  //        $this->middleware('auth', ['except' => [
-  //          'index', 'show'
-  //          ]]);
-  //
-  //         $this->registerPolicies();
-  //
-  //         Gate::define('update-post', function ($user, $post) {
-  //       return $user->id == $post->user_id;
-  //
-  //    }
-
-
+    public function __construct()
+     {
+         $this->middleware('admin', ['except' => ['index','show']]);
+     }
 
 
     public function index()
@@ -35,7 +30,8 @@ class PostController extends Controller
 
     public function create()
     {
-      return view('posts.create');
+      $photos = Photo::paginate(20);
+      return view('posts.create', compact('photos'));
     }
 
 
@@ -45,52 +41,45 @@ class PostController extends Controller
       $this->validate($request, [
           'title' => 'required',
           'body' => 'required',
-          'cover_image' => ['image', 'nullable', 'max:2048', 'mimes:jpeg,jpg,png,gif']
       ]);
 
-
-      if($request->hasFile('cover_image')) {
-
-          $image = $request->file('cover_image');
-          $filename = 'img-'.time().'.'.$image->getClientOriginalExtension();
-          $path = $request->file('cover_image')->storeAs('public/cover_images', $filename);
-
-      } else {
-         $filename = 'noimage.png';
-      }
+          if ($request->input('photo') == '')
+          {
+            $photoURL = 'noimage.png';
+          }
+          else {
+            $photoURL = $request->input('photo');
+          }
 
           $post = new Post;
           $post->title = $request->input('title');
           $post->body = $request->input('body');
           $post->synopsis = $request->input('synopsis');
           $post->user_id = auth()->user()->id;
-          $post->cover_image = $filename;
+          $post->cover_image = $photoURL;
           $post->category = $request->input('category');
           $post->save();
 
-          return redirect()
-              ->route('posts.index', [$post])
-              ->with('success', 'Stitch Created!');
+          return redirect('/admin/posts')
+              ->with('success', 'Η δημοσίευση καταχωρήθηκε!');
     }
-
 
 
     public function show(Post $post)
     {
-      return view('posts.show', compact('post'));
-    }
+      $comments = Comment::where('post_id', $post->id)->get();
+      // $users = User::where('')
+      // dd($comments);
 
+      return view('posts.show', compact(['post','comments']));
+    }
 
 
     public function edit(Post $post)
     {
-//check for correct user
-    if (auth()->user()->role !== 'admin') {
-      return redirect( '/posts')->with('error', 'Sorry friend, but you cant edit somebody elses stitch!');
+      $photos = Photo::paginate(20);
+      return view('posts.edit', compact('post', 'photos'));
     }
-    return view('posts.edit', compact('post'));
-    }
-
 
 
     public function update(Request $request, Post $post)
@@ -98,46 +87,32 @@ class PostController extends Controller
       $this->validate($request, [
           'title' => 'required',
           'body' => 'required',
-          'cover_image' => ['image', 'nullable', 'max:2048', 'mimes:jpeg,jpg,png,gif']
       ]);
 
-
-      if($request->hasFile('cover_image')) {
-
-          $image = $request->file('cover_image');
-          $filename = 'img-'.time().'.'.$image->getClientOriginalExtension();
-          $path = $request->file('cover_image')->storeAs('public/cover_images', $filename);
-
-      } else {
-         $filename = $post->cover_image;
-      }
+          if ($request->input('photo') == '')
+          {
+            $photoURL = $post->cover_image;
+          }
+          else {
+            $photoURL = $request->input('photo');
+          }
 
           $post->title = $request->input('title');
           $post->body = $request->input('body');
           $post->synopsis = $request->input('synopsis');
           $post->user_id = auth()->user()->id;
-          $post->cover_image = $filename;
+          $post->cover_image = $photoURL;
           $post->category = $request->input('category');
           $post->save();
 
-          return redirect()->route('posts.show', [$post])->with('success', 'Stitch Updated!');
+          return redirect('/admin/posts')->with('success', 'Η δημοσίευση ενημερώθηκε.');
     }
-
 
 
     public function destroy(Post $post)
     {
-
-      if (auth()->user()->id !== $post->user_id) {
-          return redirect( '/posts')->with('error', 'Sorry friend, but you cant delete somebody elses stitch!');
-      }
-
-      if ($post->cover_image != 'noimage.png') {
-          Storage::delete('public/cover_images/'.$post->cover_image);
-      }
-
       $post->delete();
-      return redirect('/posts')->with('success', 'Post Deleted!');
+      return redirect()->back()->with('success', 'Η δημοσίευση διαγράφηκε');
     }
 
 }

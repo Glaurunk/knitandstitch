@@ -92,8 +92,14 @@
                                                              document.getElementById('logout-form').submit();">
                                                 {{ __('Logout') }}
                                             </a>
-                                            <a class="dropdown-item" href="{{ route('dashboard') }}">Πίνακας Ελέγχου
+                                            @if (! Auth::user()->role == 'admin')
+                                            <a class="dropdown-item" href="/users/{{ Auth::user()->id }}">To προφίλ μου
                                             </a>
+                                            @endif
+                                            @if (Auth::user()->role == 'admin')
+                                              <a class="dropdown-item" href="/admin">Πίνακας Ελέγχου
+                                              </a>
+                                            @endif
 
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                                 @csrf

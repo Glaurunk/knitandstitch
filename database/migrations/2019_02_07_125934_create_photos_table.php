@@ -15,11 +15,13 @@ class CreatePhotosTable extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('alboum_id');
+            $table->integer('alboum_id')->nullable();
             $table->string('photo');
-            $table->string('title');
+            $table->string('title')->nullable();
             $table->string('size');
-            $table->string('description');
+            $table->boolean('in_carousel')->default(0);
+            $table->string('description')->nullable();
+
             $table->timestamps();
         });
     }

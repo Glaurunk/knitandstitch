@@ -1,32 +1,41 @@
-//  read more / read less collapsibles
+// JS to pop up delete confirmation
+function confirmDelete() {
 
-if (location.pathname == "/") {
+  var del = confirm("Are you sure you want to delete this item? This action cannot be undone.");
 
-    window.onload = function() {
-        var show = document.getElementsByClassName('show-more');
-        var hide = document.getElementsByClassName('show-less');
-        var els = document.getElementsByClassName('p-card');
-        var i;
-
-        for (i = 0; i < els.length; i++ ) {
-
-          if (els[i].innerText.split(' ').length > 50) {
-
-             show[i].classList.remove('hidden');
-      }
+  if (del == false) {
+    event.preventDefault();
     }
-  }
 }
 
 
-function showMore(more, less, pid) {
+function copyToInput($url) {
+// get the photo name as a string; pass it to the thumbnail preview both as a name ans as a local url
+  var copyText = $url;
+  document.getElementById("cover").src = "/storage/photos/"+copyText;
+  document.getElementById("cover").classList.add("thumbnail");
+  document.getElementById("inputField").value = copyText;
+  document.getElementById("photoPath").innerHTML = copyText;
 
-  var els = document.getElementById(pid);
-  var show = document.getElementById(more);
-  var hide = document.getElementById(less);
+// hide the modal
+  $('#inputForm').modal('hide');
+}
 
-  show.classList.toggle('hidden');
-  hide.classList.toggle('hidden');
-  els.classList.toggle('fp-show');
+
+function insertPhoto($url2) {
+// pass the photo url to a temporary field then copy it to the clipboard
+  var str = "http://127.0.0.1:8000/storage/photos/"+$url2;
+  var hiddenInput = document.getElementById("hiddenInput");
+  hiddenInput.value = str;
+  hiddenInput.select();
+  document.execCommand("copy");
+// hide the modal
+  $('#inputForm').modal('hide');
+}
+
+
+function  addToCarousel(name) {
+
+  $('#insert').modal('hide');
 
 }

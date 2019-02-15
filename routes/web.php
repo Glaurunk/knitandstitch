@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ Route::resource('posts', 'PostController');
 Route::resource('comments', 'CommentController');
 Route::resource('photos', 'PhotoController');
 Route::resource('alboums', 'AlboumController');
+Route::resource('users', 'UserController');
 
 // POSTS specific queries
 Route::get('/fashion', 'PagesController@fashion')->name('fashion');
@@ -37,6 +39,10 @@ Route::post('/search', 'PagesController@search');
 
 //DASHBOARD
 Route::get('/admin', 'AdminController@dashboard')->name('dashboard');
+Route::get('/admin/posts', 'AdminController@posts');
+Route::get('/carousel', 'AdminController@carousel');
+Route::post('/addtocarousel', 'AdminController@addToCarousel');
+Route::post('/removefromcarousel', 'AdminController@removeFromCarousel');
 
 // AUTHENTICATION
 Auth::routes();

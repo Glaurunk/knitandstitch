@@ -6,14 +6,13 @@
 
   @if(count($posts) > 0)
 
-
         @foreach ($posts as $post)
 
           <div class="card fp-card mb-2">
             <div class="card-block p-3">
               <div class="row">
                 <div class="col-md-4 col-sm-4">
-                      <img src="/storage/cover_images/{{ $post->cover_image }}" alt="image" class="img-fluid rounded">
+                      <img src="/storage/photos/{{ $post->cover_image }}" alt="image" class="img-fluid rounded">
                 </div>
                 <div class="col-md-8 col-sm-8">
                       <h4 class="handwriting"><a href="/posts/{{ $post->id }}">{{ $post->title }}</a></h4>
@@ -24,14 +23,11 @@
             </div> <!-- here ends card-block -->
           </div> <!-- here ends card -->
 
-          @include('auth.buttons')
-
 
         @endforeach
-
   @else
 
-    <p>No posts found</p>
+    <p class="display-4 py-5">No posts found</p>
 
   @endif
 

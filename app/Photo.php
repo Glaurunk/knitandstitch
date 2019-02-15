@@ -18,6 +18,11 @@ class Photo extends Model
                   return $this->belongsToMany(Alboum::class);
               }
 
+    public function posts()
+              {
+                  return $this->belongsToMany(Alboum::class);
+              }
+
 
 
 }

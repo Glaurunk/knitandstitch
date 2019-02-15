@@ -10,15 +10,14 @@
         <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
         <script src="{{ mix('/js/app.js') }}"></script>
         <script type="text/javascript" src="{{ url('/js/customJS.js') }}"></script>
-        <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
         <title>Knit & Stitch | Dashboard</title>
     </head>
 
-    <body style="background-color: #dddddd;">
+    <body style="background-color: #d5c5b8;">
 
       <div class="container">
         <h3 class="text-center py-3">Πίνακας Ελέγχου</h3>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light crem">
   <a class="navbar-brand" href="{{ url('/')}}">Πίσω στη σελίδα</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -26,7 +25,8 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-@if(!Auth::guest())
+@if(! Auth::guest())
+  @if (Auth::user()->role == 'admin')
 
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
@@ -40,24 +40,24 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownStitches" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Δημοσιεύματα
+          Δημοσιεύσεις
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownStitches">
-          <a class="dropdown-item" href="{{ url( '/posts/create') }}">Νέο Δημοσίευμα</a>
-          <a class="dropdown-item" href="#">Επεξεργασία Δημοσιευμάτων</a>
+          <a class="dropdown-item" href="{{ url( '/posts/create') }}">Νέα Δημοσίευση</a>
+          <a class="dropdown-item" href="{{ url( '/admin/posts') }}">Επεξεργασία Δημοσιεύσεων</a>
         </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownStitches" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Συλλογή Εικόνων
+          Εικόνες
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownStitches">
           {{-- <a class="dropdown-item" href="{{ url( '/photos/create') }}">Ανεβασμα Νέας Εικόνας</a> --}}
-          <a class="dropdown-item" data-toggle="modal" data-target="#exampleModal">
+          <a class="dropdown-item" data-toggle="modal" data-target="#uploadPicture" style="cursor: pointer;">
             Ανέβασμα Νέας Εικόνας
           </a>
-
           <a class="dropdown-item" href="{{ url( '/photos') }}">Επεξεργασία Εικόνων</a>
+          <a class="dropdown-item" href="{{ url( '/carousel') }}" >Επεξεργασία Slideshow</a>
         </div>
       </li>
       <li class="nav-item">
@@ -69,6 +69,7 @@
         <a class="nav-link" href="#">Χρήστες</a>
       </li>
     </ul>
+  @endif
 @endif
 
 <!-- Authentication Links -->
@@ -83,7 +84,7 @@
       @endif
 
       @else
-      <li class="nav-item dropdown list-style-no-style">
+      <li class="nav-item dropdown list-style-no-style ml-auto">
           <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
               {{ Auth::user()->name }} <span class="caret"></span>
           </a>
@@ -109,9 +110,13 @@
 
 @include('layouts.messages')
 
-@yield('content')
+            <div class="card crem">
+              <div class="card-body">
+                @yield('content')
+              </div>
+            </div>
 
-          <footer class="navbar navbar-expand-lg navbar-light bg-light mt-5 justify-content-center">
+          <footer class="navbar navbar-expand-lg navbar-light crem justify-content-center">
                     <p class="pt-2">designed and created by <a href="https://deepseacoding.com">deepSeaCoding.com</a></p>
           </footer>
       </div> <!--here ends container -->

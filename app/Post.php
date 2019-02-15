@@ -21,4 +21,9 @@ class Post extends Model
               {
                   return $this->hasMany(Comment::class);
               }
+
+    public function photos()
+              {
+                  return $this->hasMany(Photo::class);
+              }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use Auth;
 
 class UserController extends Controller
 {
@@ -13,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+      return 'index';
     }
 
     /**
@@ -43,9 +45,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return view('users.show', compact ('user'));
     }
 
     /**

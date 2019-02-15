@@ -1,22 +1,26 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
+
+@section('title', 'Create Post')
 
 @section('content')
+<script src=" {{ url( '../vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
 
-  <h1 class="handwriting my-5">Edit Stitch</h1>
 
-  <div class="my-5">
+  <h3 class="my-5">Ενημέρωση Δημοσιεύματος</h3>
 
-  <form class="form" action="/posts/{{ $post->id }}/edit" method="post" enctype="multipart/form-data">
+  <div class="my-5 px-5">
+
+  <form class="form pb-5" action="/posts/{{ $post->id }}" method="post" enctype="multipart/form-data">
     {{ csrf_field() }}
     {{ method_field('PATCH') }}
 
       <div class="form-group">
-          <label for="title">Title</label>
-          <input class="form-control" type="text" name="title" value="{{ $post->title }}" placeholder="{{ old('title') }}">
+          <label for="title">Τίτλος</label>
+          <input class="form-control" type="text" name="title" placeholder="{{ $post->title }}" value="{{ $post->title }}">
       </div>
 
       <div class="form-group">
-          <label for="title">Category</label>
+          <label for="title">Κατηγορία</label>
           <select class="form-control" id="category" name="category">
           <option>fashion</option>
           <option>self-care</option>
@@ -26,36 +30,58 @@
       </div>
 
       <div class="form-group">
-          <label for="synopsis">Synopsis</label>
-          <textarea class="form-control" name="synopsis" placeholder="{{ old('synopsis') }}">{{ $post->synopsis }}</textarea>
+          <label for="synopsis">Σύνοψη</label>
+          <textarea class="form-control" name="synopsis" placeholder="{{ $post->synopsis }}" value="{{ $post->synopsis }}"></textarea>
       </div>
 
       <div class="form-group">
-          <label for="body">Body</label>
-          <textarea class="form-control "name="body" placeholder="{{ old('body') }}" id="article-ckeditor">{{ $post->body }}</textarea>
+          <label for="body">Κείμενο</label>
+          <textarea class="form-control" name="body" placeholder="" id="body" value="{{ $post->body }}">{{ $post->body }}</textarea>
+      </div>
+<!-- Enter from URL part -->
+      <div class="form-group mb-5">
+          <p style="color:black;">Εικόνα Εξωφύλλου</p>
+          <img name="img" class="img-fluid" id="cover" alt="cover" src="/storage/photos/{{ $post->cover_image }}" style="max-width:120px;">
+          <p id="photoPath" class="py-2 green">{{ $post->cover_image }}</p>
+          <button type="button" class="btn btn-outline-danger bt-3" data-toggle="modal" data-target="#inputForm">Προσθήκη εξωφύλλου ή αντιγραφή διεύθυνσης στο πρόχειρο</button><br>
+          <input type="hidden" name="photo" value="" id="inputField" data-toggle="tooltip">
       </div>
 
-      <img src="/storage/cover_images/{{ $post->cover_image }}" alt="cover image" style="width:200px;" class="mb-3">
-      <div class="form-group">
-            <input type="file" name="cover_image">
-            <small class="form-text text-muted">Choose an new image for your post or leave blank to keep the existing one. Max size 2048MB</small>
-      </div>
-  <table>
-     <td class="p-2">
-       <button class="btn btn-secondary" type="submit" value="Submit" >Update Post</button>
-     </td>
+<!-- Modal -->
+        <div class="modal fade bd-example-modal-lg" id="inputForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title fuxia" id="inputForm">Προσθήκη εξωφύλλου ή αντιγραφή διεύθυνσης στο πρόχειρο</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="row p-3 light-grey">
+                    @foreach ($photos as $photo)
+                      <div class="col-3">
+                          <img class="thumbnail img-fluid" src="/storage/photos/{{ $photo->photo }}" alt="Photo">
+                          <a href="#" class="pt-2 fuxia" onclick="copyToInput('{{ $photo->photo }}')" >στο εξώφυλλο</a><br>
+                          <a href="#" onclick="insertPhoto('{{ $photo->photo }}')">στο πρόχειρο</a>
+                      </div>
+                    @endforeach
+                    <p>{{ $photos->links() }}</p>
+                </div> <!-- here ends row -->
+                <input type="text" value="" id="hiddenInput" style="height: 0px;">
+
+              </div> <!-- here ends modal-body -->
+              </div> <!-- here ends modal-content -->
+            </div> <!-- here ends modal-dialogue -->
+          </div> <!-- here ends modal -->
+<!-- here ends enter from url -->
+
+      <button class="btn btn-outline-secondary" type="submit" value="Submit" >Ενημέρωση</button>
+      <a href="{{ url('/admin/posts') }}" class="btn btn-outline-dark">Ακύρωση</a>
+
   </form>
-      <form class="form" action="/posts/{{ $post->id }}" method="post">
-        {{ csrf_field() }}
-        {{ method_field('delete') }}
-          <td class="p-2">
-            <button type="submit" class="btn btn-danger">Delete Post</button>
-          </td>
-  </form>
-  </table>
-</div> <!-- here ends mt5 -->
-<script src="{{ url('/vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
-    <script>
-        CKEDITOR.replace( 'article-ckeditor' );
-    </script>
+</div>
+
+<script>CKEDITOR.replace( 'body' );</script>
+
 @endsection

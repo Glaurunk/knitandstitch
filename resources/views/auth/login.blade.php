@@ -5,7 +5,7 @@
     <div class="row justify-content-center my-5">
         <div class="col-md-8">
             <div class="card fp-card">
-                <div class="card-header">Είσοδος στην Εφαρμογή</div>
+                <div class="card-header">Login</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -45,7 +45,7 @@
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        Θυμήσου με!
+                                        remember me!
                                     </label>
                                 </div>
                             </div>
@@ -54,12 +54,12 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-outline-danger">
-                                    Είσοδος
+                                    Login
                                 </button>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-outline-secondary" href="{{ route('password.request') }}">
-                                        Ξεχάσατε τον κωδικό σας;
+                                        Forgot your password;
                                     </a>
                                 @endif
                             </div>

@@ -12,7 +12,7 @@ function confirmDelete() {
 function copyToInput($url) {
 // get the photo name as a string; pass it to the thumbnail preview both as a name ans as a local url
   var copyText = $url;
-  document.getElementById("cover").src = "/storage/photos/"+copyText;
+  document.getElementById("cover").src = "/gallery/"+copyText;
   document.getElementById("cover").classList.add("thumbnail");
   document.getElementById("inputField").value = copyText;
   document.getElementById("photoPath").innerHTML = copyText;
@@ -24,7 +24,7 @@ function copyToInput($url) {
 
 function insertPhoto($url2) {
 // pass the photo url to a temporary field then copy it to the clipboard
-  var str = "http://127.0.0.1:8000/storage/photos/"+$url2;
+  var str = "http://127.0.0.1:8000/gallery/"+$url2;
   var hiddenInput = document.getElementById("hiddenInput");
   hiddenInput.value = str;
   hiddenInput.select();

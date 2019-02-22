@@ -66,7 +66,7 @@
                                       <button class="btn btn-outline-danger btn-sm my-2 my-sm-0" type="submit">Search</button>
 
                                     </form>
-                                    <p class="fs-06 text-center">Εισάγετε τη λέξη-κλειδί, της αναζήτησης</p>
+                                    <p class="fs-06 text-center">Enter a keyword</p>
                                   </div>
                               </li>
 
@@ -92,12 +92,12 @@
                                                              document.getElementById('logout-form').submit();">
                                                 {{ __('Logout') }}
                                             </a>
-                                            @if (! Auth::user()->role == 'admin')
-                                            <a class="dropdown-item" href="/users/{{ Auth::user()->id }}">To προφίλ μου
+                                            @if (Auth::user()->role == 'user')
+                                            <a class="dropdown-item" href="/users/{{ Auth::user()->id }}">My Profile
                                             </a>
                                             @endif
                                             @if (Auth::user()->role == 'admin')
-                                              <a class="dropdown-item" href="/admin">Πίνακας Ελέγχου
+                                              <a class="dropdown-item" href="/admin">Dashboard
                                               </a>
                                             @endif
 

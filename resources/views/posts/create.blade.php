@@ -6,7 +6,7 @@
 <script src=" {{ url( '../vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
 
 
-  <h3 class="my-5">Δημιουργία Δημοσίευσης</h3>
+  <h3 class="my-5">Create Stitch</h3>
 
   <div class="my-5 px-5">
 
@@ -14,12 +14,12 @@
     {{ csrf_field() }}
 
       <div class="form-group">
-          <label for="title">Τίτλος</label>
+          <label for="title">Title</label>
           <input class="form-control" type="text" name="title" value="{{ old('title') }}">
       </div>
 
       <div class="form-group">
-          <label for="title">Κατηγορία</label>
+          <label for="title">Category</label>
           <select class="form-control" id="category" name="category">
           <option>fashion</option>
           <option>self-care</option>
@@ -29,20 +29,20 @@
       </div>
 
       <div class="form-group">
-          <label for="synopsis">Σύνοψη</label>
+          <label for="synopsis">Synopsis</label>
           <textarea class="form-control" name="synopsis" value="{{ old('synopsis') }}"></textarea>
       </div>
 
       <div class="form-group">
-          <label for="body">Κείμενο</label>
+          <label for="body">Text</label>
           <textarea class="form-control" name="body" id="body" value="{{ old('body') }}"></textarea>
       </div>
 <!-- Enter from URL part -->
       <div class="form-group mb-5">
-          <p style="color:black;">Εικόνα Εξωφύλλου</p>
+          <p style="color:black;">Cover Image</p>
           <img name="img" class="img-fluid" id="cover" alt="cover" src="{{ url('/images/noimage.png') }}" style="max-width:120px;">
           <p id="photoPath" class="py-2 green">noimage.png</p>
-          <button type="button" class="btn btn-outline-danger bt-3" data-toggle="modal" data-target="#inputForm">Προσθήκη εξωφύλλου ή αντιγραφή διεύθυνσης στο πρόχειρο</button><br>
+          <button type="button" class="btn btn-outline-danger bt-3" data-toggle="modal" data-target="#inputForm">Add a cover image OR copy an image URL to the Clipboard</button><br>
           <input type="hidden" name="photo" value="" id="inputField" data-toggle="tooltip">
       </div>
 
@@ -51,7 +51,7 @@
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title fuxia" id="inputForm">Προσθήκη εξωφύλλου ή αντιγραφή διεύθυνσης στο πρόχειρο</h5>
+                <h5 class="modal-title fuxia" id="inputForm">Add a cover image OR copy an image URL to the Clipboard</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -60,9 +60,9 @@
                 <div class="row p-3 moccha">
                     @foreach ($photos as $photo)
                       <div class="col-3">
-                          <img class="thumbnail img-fluid" src="/storage/photos/{{ $photo->photo }}" alt="Photo">
-                          <a href="#" class="pt-2" onclick="copyToInput('{{ $photo->photo }}')" >στο εξώφυλλο</a><br>
-                          <a href="#" onclick="insertPhoto('{{ $photo->photo }}')">στο πρόχειρο</a>
+                          <img class="thumbnail img-fluid" src="/gallery/{{ $photo->photo }}" alt="Photo">
+                          <a href="#" class="pt-2" onclick="copyToInput('{{ $photo->photo }}')" >add to Cover</a><br>
+                          <a href="#" onclick="insertPhoto('{{ $photo->photo }}')">add to Clipboard</a>
                       </div>
                     @endforeach
                     <p>{{ $photos->links() }}</p>
@@ -75,8 +75,8 @@
           </div> <!-- here ends modal -->
 <!-- here ends enter from url -->
 
-      <button class="btn btn-outline-secondary" type="submit" value="Submit" >Δημιουργία!</button>
-      <a href="{{ url('/posts') }}" class="btn btn-outline-dark">Πίσω στις Δημοσιεύσεις</a>
+      <button class="btn btn-outline-secondary" type="submit" value="Submit" >Publish</button>
+      <a href="{{ url('/admin') }}" class="btn btn-outline-dark">Cancel</a>
 
   </form>
 </div>

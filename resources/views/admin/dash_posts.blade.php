@@ -7,15 +7,16 @@
   <div class=" card-body moccha my-3">
 
       <table class="table table-hover">
-        <a href="{{ url('posts/create') }}" class="btn btn-outline-dark btn-sm">Προσθήκη νέας</a>
+        <a href="{{ url('posts/create') }}" class="btn btn-outline-dark btn-sm">Add New</a>
         <h3 class="text-center py-3">
-          Πίνακας Δημοσιεύσεων</h3>
+          Stitces Panel</h3>
         <thead class="">
           <tr>
-            <th scope="col">Εικόνα Εξωφύλλου</th>
-            <th scope="col">Τίτλος</th>
-            <th scope="col">Ημερομηνία</th>
-            <th scope="col">Ενέργειες</th>
+            <th scope="col">Cover Image</th>
+            <th scope="col">Title</th>
+            <th scope="col">Published</th>
+            <th scope="col">Comments</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -24,16 +25,17 @@
 
     @foreach ($posts as $post)
           <tr>
-            <th scope="row"><a href="/posts/{{ $post->id }}"><img src="/storage/photos/{{ $post->cover_image }}" alt="cover" style="max-width:120px;"></a></th>
+            <th scope="row"><a href="/posts/{{ $post->id }}"><img src="/gallery/{{ $post->cover_image }}" alt="cover" style="max-width:120px;"></a></th>
             <td>{{ $post->title }}</td>
             <td>{{ $post->created_at }}</td>
+            <td>{{ count( $post->comments )}}</td>
             <td>
               <div class="row align-self-start">
                 <form class="" action="/posts/{{ $post->id}}" method="post">
                 {{ csrf_field() }}
                 {{ method_field('delete')}}
-                <button type="submit" name="button" class="btn btn-sm btn-outline-danger" onclick="confirmDelete()">Διαγραφή</button>
-                <a href="/posts/{{ $post->id}}/edit" class="btn btn-sm btn-outline-secondary">Επεξεργασία</a>
+                <button type="submit" name="button" class="btn btn-sm btn-outline-danger" onclick="confirmDelete()">Delete</button>
+                <a href="/posts/{{ $post->id}}/edit" class="btn btn-sm btn-outline-secondary">Edit</a>
                 </form>
               </div>
             </td>
@@ -44,7 +46,7 @@
       </table>
 
       <p>{{ $posts->links() }}</p>
-      <a href="{{ url('/admin')}}">πίσω στον πίνακα ελέγχου</a>
+      <a href="{{ url('/admin')}}">back to dashboard</a>
 
 
   </div> <!-- here ends card block-->

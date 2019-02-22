@@ -2,7 +2,7 @@
 // JS to pop up delete confirmation
 function confirmDelete() {
 
-  var del = confirm("Είστε σίγουροι ότι θέλετε να συνεχίσετε; Η διαγραφή θα είναι οριστική.");
+  var del = confirm("Are you sure you wish to continue? This action is non reversible.");
 
   if (del == false) {
     event.preventDefault();

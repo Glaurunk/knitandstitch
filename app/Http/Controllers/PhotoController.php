@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Photo;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use File;
 
 
 class PhotoController extends Controller
@@ -22,7 +22,7 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        $photos = Photo::paginate(20);
+        $photos = Photo::paginate(10);
         return view ('photos.index', compact('photos'));
     }
 
@@ -51,7 +51,8 @@ class PhotoController extends Controller
 // Create new filename and Store to disk
           $image = $request->file('photo');
           $filename = 'img-'.time().'.'.$image->getClientOriginalExtension();
-          $path = $request->file('photo')->storeAs('public/photos', $filename);
+          $size = $image->getClientSize();
+          $path = $request->file('photo')->move('gallery', $filename);
 // Create new photo instance
           $photo = new Photo;
           $photo->title = $request->input('title');
@@ -59,15 +60,15 @@ class PhotoController extends Controller
           $photo->photo = $filename;
           $photo->in_carousel = 0;
 // put array of dimensions into a string
-          $dimensions = getimagesize('storage/photos/'.$filename);
-          $photo->dimensions = $dimensions[0].' πλάτος επί '.$dimensions[1].' υψος.';
+          $dimensions = getimagesize('gallery/'.$filename);
+          $photo->dimensions = $dimensions[0].' width by '.$dimensions[1].' height.';
 // get filesize and save instance to db
-          $photo->size = $image->getClientSize();
+          $photo->size = $size;
           $photo->save();
 
           return redirect()
               ->back()
-              ->with('success', 'Η εικόνα προστέθηκε στη Συλλογή!');
+              ->with('success', 'The image has been added to the Gallery!');
     }
 
     /**
@@ -118,7 +119,7 @@ class PhotoController extends Controller
 
         return redirect()
             ->back()
-            ->with('success', 'Tα στοιχεία της εικόνας ενημερώθηκαν!');
+            ->with('success', 'Image information has been updated!');
     }
 
     /**
@@ -130,10 +131,10 @@ class PhotoController extends Controller
     public function destroy(Photo $photo)
     {
 
-        $path = 'public/photos/'.$photo->photo;
-        Storage::delete($path);
+        $path = 'gallery/'.$photo->photo;
+        File::delete($path);
         $photo->delete();
-        return redirect('/admin/photos')->with('success', 'Η εικόνα διαγράφηκε!');
+        return redirect('/photos')->with('success', 'Image has been deleted.');
 
     }
 }

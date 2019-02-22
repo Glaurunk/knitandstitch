@@ -125,7 +125,7 @@ class PagesController extends Controller
                     $keys = $request->input('search');
                     return redirect('/search')
                         ->with('keys', $keys)
-                        ->with('error', 'Δεν βρέθηκαν αποτελέσματα για την αναζήτηση: '.$keys);
+                        ->with('error', 'Found no results matching your search for: '.$keys);
 
                   }
                 }

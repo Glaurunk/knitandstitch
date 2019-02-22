@@ -7,7 +7,7 @@
     <h1 class="py-3">Terms and Conditions ("Terms")</h1>
 
 
-<p>Last updated: January 29, 2019</p>
+<p>Last updated: February 22, 2019</p>
 
 
 <p>Please read these Terms and Conditions ("Terms", "Terms and Conditions") carefully before using the https://www.knitandstitch.gr website (the "Service") operated by Knit and Stitch ("us", "we", or "our").</p>
@@ -24,6 +24,7 @@
 <p>You are responsible for safeguarding the password that you use to access the Service and for any activities or actions under your password, whether your password is with our Service or a third-party service.</p>
 
 <p>You agree not to disclose your password to any third party. You must notify us immediately upon becoming aware of any breach of security or unauthorized use of your account.</p>
+
 
 <h2 class="py-3">Conduct</h2>
 <p>You agree not to use the Services to:
@@ -43,6 +44,7 @@
     <li>make available viruses or any other computer code, files, programs or content designed to interrupt, destroy or limit the functionality of the Services or affect other users; or
     </li>
     <li>interfere with or disrupt the Services or servers, systems or networks connected to the Services in any way.</li>
+    <li>use offensive or abusive language. Knit and Stitch retains the right to hide or delete comments and users without prior notice.</li>
   </ul>
 </p>
 

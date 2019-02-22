@@ -61,24 +61,22 @@ class PostController extends Controller
           $post->save();
 
           return redirect('/admin/posts')
-              ->with('success', 'Η δημοσίευση καταχωρήθηκε!');
+              ->with('success', 'Your stitch has been published!');
     }
 
 
     public function show(Post $post)
     {
       $comments = Comment::where('post_id', $post->id)->get();
-      // $users = User::where('')
-      // dd($comments);
-
       return view('posts.show', compact(['post','comments']));
     }
 
 
     public function edit(Post $post)
     {
+      $comments = Comment::where('post_id', $post->id)->paginate(10);
       $photos = Photo::paginate(20);
-      return view('posts.edit', compact('post', 'photos'));
+      return view('posts.edit', compact('post', 'photos', 'comments'));
     }
 
 
@@ -105,14 +103,15 @@ class PostController extends Controller
           $post->category = $request->input('category');
           $post->save();
 
-          return redirect('/admin/posts')->with('success', 'Η δημοσίευση ενημερώθηκε.');
+          return redirect('/admin/posts')->with('success', 'You stitch has been updated!');
     }
 
 
     public function destroy(Post $post)
     {
+      $comments = Comment::where('post_id', $post->id)->delete();
       $post->delete();
-      return redirect()->back()->with('success', 'Η δημοσίευση διαγράφηκε');
+      return redirect()->back()->with('success', 'The stitch has been deleted along with all its comments.');
     }
 
 }

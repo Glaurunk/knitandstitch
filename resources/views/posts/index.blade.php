@@ -12,7 +12,7 @@
             <div class="card-block p-3">
               <div class="row">
                 <div class="col-md-4 col-sm-4">
-                      <img src="/storage/photos/{{ $post->cover_image }}" alt="image" class="img-fluid rounded">
+                      <img src="/gallery/{{ $post->cover_image }}" alt="image" class="img-fluid rounded">
                 </div>
                 <div class="col-md-8 col-sm-8">
                       <h4 class="handwriting"><a href="/posts/{{ $post->id }}">{{ $post->title }}</a></h4>
@@ -27,7 +27,7 @@
         @endforeach
   @else
 
-    <p>Δεν υπάρχουν δημοσιεύσεις!</p>
+    <p>No Stitches Found!</p>
 
   @endif
 

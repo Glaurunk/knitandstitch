@@ -6,18 +6,18 @@
   <div class="row justify-content-center">
       <div class="col-md">
           <div class="card indigo">
-              <div class="card-header grey text-center fs-20" >Ρύθμιση Carousel</div>
+              <div class="card-header grey text-center fs-20">Carousel Panel</div>
                 <div class="card-body">
 
 @include('layouts.carousel')
 
   <table class="table mb-5" id="carouselTable">
-    <h3 class="pt-5">Φωτογραφίες στο Carousel</h3>
+    <h3 class="pt-5">Carousel Slides</h3>
     <thead>
       <tr>
-        <th scope="col-2">Εικόνα</th>
-        <th scope="col-auto">Όνομα Αρχείου</th>
-        <th scope="col-auto">Ενέργειες</th>
+        <th scope="col-2">Preview</th>
+        <th scope="col-auto">Filename</th>
+        <th scope="col-auto">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -25,14 +25,14 @@
 
           @foreach ($in_carousels as $in_carousel)
                 <tr>
-                  <th scope="row"><img class="img-fluid" src="/storage/photos/{{ $in_carousel->photo }}" alt="Photo" style="max-width: 120px;"></th>
+                  <th scope="row"><img class="img-fluid" src="/gallery/{{ $in_carousel->photo }}" alt="Photo" style="max-width: 120px;"></th>
                   <td>{{ $in_carousel->photo }}</td>
                   <td>
                     <div class="row align-self-start">
                       <form class="" action="{{ url('/removefromcarousel')}}" method="post">
                         {{ csrf_field() }}
                         <input type="hidden" name="carousel_id" value="{{ $in_carousel->id }}">
-                        <button class="btn btn-outline-danger btn-sm" type="submit" name="submit">Αφαίρεση από το Carousel</button>
+                        <button class="btn btn-outline-danger btn-sm" type="submit" name="submit">Remove from Carousel</button>
                       </form>
                     </div>
                   </td>
@@ -45,7 +45,7 @@
 
 <!-- Here start buttons -->
       <div class="card my-2">
-        <button class="btn btn-outline-danger" data-toggle="modal" data-target="#insert">Προσθήκη εικόνας στο Carousel</button>
+        <button class="btn btn-outline-danger" data-toggle="modal" data-target="#insert">Add image to the Carousel</button>
       </div>
 
 
@@ -69,11 +69,11 @@
 
             @foreach ($not_in_carousels as $not_in_carousel)
               <div class="col-3">
-                  <img class="thumbnail img-fluid" src="/storage/photos/{{ $not_in_carousel->photo }}" alt="Photo">
+                  <img class="thumbnail img-fluid" src="/gallery/{{ $not_in_carousel->photo }}" alt="Photo">
                   <form class="" action="{{ url('/addtocarousel')}}" method="post">
                     {{ csrf_field() }}
                     <input type="hidden" name="not_carousel_id" value="{{ $not_in_carousel->id }}">
-                    <button class="btn fuxia"type="submit" name="submit" onclick="addToCarousel()">Προσθήκη στο Carousel</button>
+                    <button class="btn fuxia"type="submit" name="submit" onclick="addToCarousel()">Add to Carousel</button>
                   </form>
               </div>
             @endforeach
@@ -85,7 +85,7 @@
     </div> <!-- here ends modal-dialogue -->
   </div> <!-- here ends modal -->
 
-  <a href="{{ url('/admin')}}">πίσω στον πίνακα ελέγχου</a>
+  <a href="{{ url('/admin')}}">back to dashboard</a>
 
 
 <!-- Closing tags -->

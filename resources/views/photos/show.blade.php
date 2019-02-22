@@ -15,31 +15,31 @@
           <div class="card">
               <div class="card-header">{{ $photo->photo }}</div>
                 <div class="card-body">
-                  <img class="card-img-top" src="/storage/photos/{{ $photo->photo }}" alt="image">
-                  <h5 class="py-3">Tίτλος: {{ $photo->title }}</h5>
-                  <p>Σύντομη Περιγραφή: <em>{{ $photo->description }}</em></p>
-                  <p>Μέγεθος: {{ $MB }}</p>
-                  <p>Διαστάσεις: {{ $photo->dimensions }}</p> <p><small>Μεταφορτώθηκε: {{ $photo->created_at }}</small>
-                  <br><small>Tελευταία ενημέρωση: {{ $photo->updated_at }}</small></p>
+                  <img class="card-img-top" src="/gallery/{{ $photo->photo }}" alt="image">
+                  <h5 class="py-3">Title: {{ $photo->title }}</h5>
+                  <p>Short Description: <em>{{ $photo->description }}</em></p>
+                  <p>Size: {{ $MB }}</p>
+                  <p>Dimensions: {{ $photo->dimensions }}</p> <p><small>Uploaded: {{ $photo->created_at }}</small>
+                  <br><small>Updated: {{ $photo->updated_at }}</small></p>
                 </div> <!-- here ends card body -->
           </div> <!-- here ends card -->
       </div> <!-- here ends column -->
 
       <div class="col-md-6">
           <div class="card">
-              <div class="card-header">Επεξεργασία στοιχείων</div>
+              <div class="card-header">Update Info</div>
                 <div class="card-body">
                   <form class="form" action="/photos/{{ $photo->id }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     {{ method_field('PATCH')}}
 
                       <div class="form-group">
-                          <label for="title">Νέος Τίτλος</label>
+                          <label for="title">New Title</label>
                           <input class="form-control" type="text" name="title" placeholder="{{ $photo->title }}" value="{{ old('title') }}">
                       </div>
 
                       <div class="form-group">
-                          <label for="description">Νέα Σύντομη Περιγραφή</label>
+                          <label for="description">New Short Description</label>
                           <textarea class="form-control" name="description" placeholder="{{ $photo->description}}" value="{{ old('description') }}"></textarea>
                       </div>
 
@@ -48,7 +48,7 @@
                   <div class="modal-footer">
                       <table>
                         <td>
-                          <button class="btn btn-secondary" type="submit" value="Submit">Ενημέρωση</button>
+                          <button class="btn btn-outline-secondary" type="submit" value="Submit">Update Info</button>
                           </form>
                         </td>
 
@@ -58,10 +58,10 @@
                           {{ csrf_field() }}
                           {{ method_field('delete') }}
                           <td>
-                            <button type="submit" class="btn btn-danger" onclick="confirmDelete()">Διαγραφή</button>
+                            <button type="submit" class="btn btn-outline-danger" onclick="confirmDelete()">Delete</button>
                           </td>
                           <td>
-                            <a href="{{ url('/photos')}}" class="btn btn-dark my-2">Πίσω στη Συλλογή</a>
+                            <a href="{{ url('/photos')}}" class="btn btn-outline-dark my-2">Back to Gallery</a>
                           </td>
                         </form>
                       </table>

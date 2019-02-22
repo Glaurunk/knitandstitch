@@ -11,7 +11,7 @@ use DB;
 
 class AdminController extends Controller
 {
-  
+
    public function __construct()
      {
          $this->middleware('admin', ['except' => ['index','show']]);
@@ -47,7 +47,7 @@ class AdminController extends Controller
         $photo = Photo::find($id);
         $photo->in_carousel = 1;
         $photo->save();
-        return redirect()->back()->with('success', 'Η εικόνα προστέθηκε στο Carousel.');
+        return redirect()->back()->with('success', 'The image has been added to the Carousel.');
      }
 
     public function removeFromCarousel(Request $request)
@@ -56,7 +56,7 @@ class AdminController extends Controller
           $photo = Photo::find($id);
           $photo->in_carousel = 0;
           $photo->save();
-          return redirect()->back()->with('success', 'Η εικόνα αφαιρέθηκε από το Carousel.');
+          return redirect()->back()->with('success', 'The image has been removed from the Carousel.');
       }
 
 }

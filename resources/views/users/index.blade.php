@@ -1,48 +1,55 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Photos')
+@section('title', 'users')
 
 @section('content')
-  <!-- MANAGE photoS CARD -->
+  <!-- MANAGE userS CARD -->
   <div class="">
     <div class=" card-body moccha my-3">
 
         <table class="table table-hover">
-          <a href="{{ url('photos/create') }}" class="btn btn-outline-dark btn-sm" data-toggle="modal" data-target="#uploadPicture">Add New</a>
           <h3 class="text-center py-3">
-            Images Catalogue</h3>
+            Users Catalogue</h3>
           <thead class="">
             <tr>
-              <th scope="col">Preview</th>
-              <th scope="col">Title</th>
+              <th scope="col">User ID</th>
+              <th scope="col">User Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Subscriber</th>
+              <th scope="col">Comments</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
 
-  @if(count($photos) > 0)
-
-      @foreach ($photos as $photo)
+      @foreach ($users as $user)
             <tr>
-              <th scope="row"><a href="/photos/{{ $photo->id }}"><img src="/gallery/{{ $photo->photo }}" alt="cover" style="max-width:120px;"></a></th>
-              <td>{{ $photo->title }}</td>
+              <th scope="row">{{ $user->id }}</th>
+              <td><a href="/users/{{ $user->id }}">{{ $user->name }}</a></td>
+              <td><a href="mailto:{{ $user->email }}">{{ $user->email }}</a></td>
+              <td>
+                @if ($user->has_subscription == 0)
+                  NO
+                @else
+                  YES
+                @endif
+              </td>
+              <td>{{ count($user->comments)}}</td>
               <td>
                 <div class="row align-self-start">
-                  <form class="" action="/photos/{{ $photo->id}}" method="post">
+                  <form class="" action="/users/{{ $user->id}}" method="post">
                   {{ csrf_field() }}
                   {{ method_field('delete')}}
                   <button type="submit" name="button" class="btn btn-sm btn-outline-danger" onclick="confirmDelete()">Delete</button>
-                  <a href="/photos/{{ $photo->id}}/edit" class="btn btn-sm btn-outline-secondary">Update Info</a>
                   </form>
                 </div>
               </td>
             </tr>
       @endforeach
-    @endif
           </tbody>
         </table>
 
-        <p>{{ $photos->links() }}</p>
+        <p>{{ $users->links() }}</p>
         <a href="{{ url('/admin')}}">back to dashboard</a>
 
 

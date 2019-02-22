@@ -16,9 +16,9 @@
     <body style="background-color: #d5c5b8;">
 
       <div class="container">
-        <h3 class="text-center py-3">Πίνακας Ελέγχου</h3>
+        <h3 class="text-center py-3">Dashboard</h3>
         <nav class="navbar navbar-expand-lg navbar-light crem">
-  <a class="navbar-brand" href="{{ url('/')}}">Πίσω στη σελίδα</a>
+  <a class="navbar-brand" href="{{ url('/')}}">Back to Site</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -31,42 +31,37 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownKnits" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Χειροτεχνήματα
+          Knits
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownKnits">
-          <a class="dropdown-item" href="#">Νέο Χειροτέχνημα</a>
-          <a class="dropdown-item" href="#">Επεξεργασία Χειροτεχνημάτων</a>
+          <a class="dropdown-item" href="#">New Knit</a>
+          <a class="dropdown-item" href="#">Manage Knits</a>
         </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownStitches" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Δημοσιεύσεις
+          Stitches
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownStitches">
-          <a class="dropdown-item" href="{{ url( '/posts/create') }}">Νέα Δημοσίευση</a>
-          <a class="dropdown-item" href="{{ url( '/admin/posts') }}">Επεξεργασία Δημοσιεύσεων</a>
+          <a class="dropdown-item" href="{{ url( '/posts/create') }}">New Stitch</a>
+          <a class="dropdown-item" href="{{ url( '/admin/posts') }}">Manage Stitches</a>
         </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownStitches" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Εικόνες
+          Images
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownStitches">
           {{-- <a class="dropdown-item" href="{{ url( '/photos/create') }}">Ανεβασμα Νέας Εικόνας</a> --}}
           <a class="dropdown-item" data-toggle="modal" data-target="#uploadPicture" style="cursor: pointer;">
-            Ανέβασμα Νέας Εικόνας
+            Upload New Image
           </a>
-          <a class="dropdown-item" href="{{ url( '/photos') }}">Επεξεργασία Εικόνων</a>
-          <a class="dropdown-item" href="{{ url( '/carousel') }}" >Επεξεργασία Slideshow</a>
+          <a class="dropdown-item" href="{{ url( '/photos') }}">Image Gallery</a>
+          <a class="dropdown-item" href="{{ url( '/carousel') }}" >Manage Carousel</a>
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
-          Σχόλια
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Χρήστες</a>
+        <a class="nav-link" href="#">Users</a>
       </li>
     </ul>
   @endif
@@ -95,8 +90,10 @@
                                document.getElementById('logout-form').submit();">
                   {{ __('Logout') }}
               </a>
-              <a class="dropdown-item" href="{{ route('dashboard') }}">Πίνακας Ελέγχου
-              </a>
+              @if (Auth::user()->role == 'admin')
+                <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard
+                </a>
+              @endif
 
               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                   @csrf

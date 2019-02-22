@@ -5,14 +5,14 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card fp-card">
-                <div class="card-header">Εγγραφή Νεόυ Χρήστη</div>
+                <div class="card-header">Register</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Όνομα</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">Κωδικός</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Επιβεβαίωση Κωδικού</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
@@ -63,7 +63,7 @@
                         <hr>
                         <div class="row align-items-center">
                           <div class="col-9">
-                              <p class="fs-08 mr-5 pt-3">Θέλω να εγγραφώ και στο nesletter σας!</p>
+                              <p class="fs-08 mr-5 pt-3">I also wish to subscribe to your Newsletter!</p>
                           </div>
                           <div class="col-3">
                               <input id="has_subscription" type="checkbox" class="" name="has_subscription" value="subscribe">
@@ -71,7 +71,7 @@
                         </div>
                         <div class="row ">
                           <div class="col-9 ">
-                            <p class="fs-08 mr-5">Είμαι άνω των 18 ή έχω γονική συναίνεση να εγγραφώ σε αυτόν τον ιστότοπο!</p>
+                            <p class="fs-08 mr-5">I am either above 14 or I have parental consent to register!</p>
                           </div>
                           <div class="col-3">
                             <input id="adult" type="checkbox" class="" name="adult" required>
@@ -81,8 +81,8 @@
 
 
                         <div class="form-group row mb-0 justify-content-center">
-                                <button type="submit" class="btn btn-outline-danger" value="Εγγραφή">
-                                    Εγγραφή
+                                <button type="submit" class="btn btn-outline-danger" value="register">
+                                    Register
                                 </button>
                             </div>
                     </form>

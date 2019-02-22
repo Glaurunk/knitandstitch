@@ -4,38 +4,32 @@
       <table class="table table-striped">
         <tbody>
           <tr>
-            <td><strong>Δημοσιεύσεις</strong></td>
-            <td><a href="{{ url( '/posts/create') }}" class="">Νέα Δημοσίευση</td>
-            <td><a href="{{ url( '/admin/posts') }}" class="">Επεξεργασία Δημοσιεύσεων</a></td>
+            <td><strong>Stitches</strong></td>
+            <td><a href="{{ url( '/posts/create') }}" class="">New Stitch</td>
+            <td><a href="{{ url( '/admin/posts') }}" class="">Manage Stitches</a></td>
             <td></td>
 
           </tr>
           <tr>
-            <td><strong>Χειροτεχνήματα</strong></td>
-            <td>Νέο Χειροτέχνημα</td>
-            <td>Επεξεργασία Χειροτεχνημάτων</td>
+            <td><strong>Knits</strong></td>
+            <td>New Knit</td>
+            <td>Manage Knits</td>
             <td></td>
           </tr>
           <tr>
-            <td><strong>Εικόνες</strong></td>
+            <td><strong>Images</strong></td>
             <td>
               <a href="#" data-toggle="modal" data-target="#uploadPicture" style="cursor: pointer;">
-              Νέα Εικόνα
+              Upload New Image
               </a>
             </td>
-            <td><a href="{{ url('/photos') }}">Επεξεργασία Εικόνων</a></td>
-            <td><a href="{{ url('/carousel') }}">Διαμόρφωση Carousel</a></td>
+            <td><a href="{{ url('/photos') }}">Image Gallery</a></td>
+            <td><a href="{{ url('/carousel') }}">Manage Carousel</a></td>
           </tr>
           <tr>
-            <td><strong>Σχόλια</strong></td>
+            <td><strong>Users</strong></td>
             <td></td>
-            <td>Επεξεργασία Σχολίων</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><strong>Χρήστες</strong></td>
-            <td></td>
-            <td>Επεξεργασία Χρηστών</td>
+            <td><a href="{{ url('/users') }}">Manage Users</a></td>
             <td></td>
           </tr>
         </tbody>

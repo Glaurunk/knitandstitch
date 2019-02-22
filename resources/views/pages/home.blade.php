@@ -49,7 +49,7 @@
 
     <div class="card fp-card mb-2">
       <div class="card-block p-3 text-center">
-                <img src="/storage/photos/{{ $post->cover_image }}" alt="image" class="img-fluid rounded mb-3">
+                <img src="/gallery/{{ $post->cover_image }}" alt="image" class="img-fluid rounded mb-3">
                 <h5 class="text-center handwriting mb-3"><a href="/posts/{{ $post->id }}">{{ $post->title }}</a></h5>
                 <p class="font-italic fs-08 ">Category: <a href="#">{{ $post->category }}</a> | {{ $post->created_at->day }}/{{ $post->created_at->month }}/{{ $post->created_at->year }}</p>
                 <p class="text-justify hyphen">{{ $post->synopsis }}</p>

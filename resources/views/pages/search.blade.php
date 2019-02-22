@@ -6,16 +6,16 @@
   <div class="container py-5">
     <form action="{{ url('/search') }}" method="POST" role="search" class="dropdown-item form-inline mt-2">
       {{ csrf_field() }}
-      <p>Πραγματοποιήστε νέα αναζήτηση!</p>
+      <p>New Search!</p>
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search">
       <button class="btn btn-outline-danger btn-sm my-2 my-sm-0" type="submit">Search</button>
     </form>
-    <small>Εισάγετε τη λέξη-κλειδί της αναζήτησης.</small>
+    <small>Enter keyword</small>
   </div>
 
 @if(isset($posts))
 <!-- return search terms -->
-  <p class="mb-4"> Τα αποτελέσματα της αναζήτησής σας για:
+  <p class="mb-4"> The results of your search for:
     @foreach($terms as $term)
         <b>{{ $term }}</b>
     @endforeach

@@ -27,11 +27,18 @@ Route::resource('photos', 'PhotoController');
 Route::resource('alboums', 'AlboumController');
 Route::resource('users', 'UserController');
 
+// USER specific queries
+Route::post('/subscribe', 'UserController@toggleSubscription');
+
 // POSTS specific queries
 Route::get('/fashion', 'PagesController@fashion')->name('fashion');
 Route::get('/self_care', 'PagesController@self_care')->name('self_care');
 Route::get('/my house', 'PagesController@my_house')->name('my_house');
 Route::get('/inspiration', 'PagesController@inspiration')->name('inspiration');
+
+// COMMENTS specific queries
+Route::post('/mark', 'CommentController@toggleInappropriate');
+Route::post('/mark2', 'CommentController@toggleHidden');
 
 //SEARCH
 Route::get('/search', 'PagesController@display_search' );
@@ -46,5 +53,3 @@ Route::post('/removefromcarousel', 'AdminController@removeFromCarousel');
 
 // AUTHENTICATION
 Auth::routes();
-
-//Route::get('/home', 'HomeController@index')->name('home');

@@ -3,7 +3,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="uploadPicture">Ανέβασμα Νέας Εικόνας</h5>
+        <h5 class="modal-title" id="uploadPicture">Upload New Image</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -13,24 +13,24 @@
           {{ csrf_field() }}
 
             <div class="form-group">
-                <label for="title">Τίτλος</label>
+                <label for="title">Title</label>
                 <input class="form-control" type="text" name="title" placeholder="title" value="{{ old('title') }}">
             </div>
 
             <div class="form-group">
-                <label for="description">Σύντομη Περιγραφή</label>
+                <label for="description">Short Description</label>
                 <textarea class="form-control" name="description" placeholder="a short description for indexing" value="{{ old('synopsis') }}"></textarea>
             </div>
 
             <div class="form-group mb-5">
                   <input type="file" name="photo">
-                  <small class="form-text text-muted">Επιλέξτε μια εικόνα εξωφύλλου από τον υπολογιστή σας. Μέγιστο μέγεθος 2ΜΒ</small>
+                  <small class="form-text text-muted">Choose an image from yoyr computer. Maximum size: 2ΜΒ</small>
             </div> <!-- here ends file input -->
       </div> <!-- here ends modal body -->
 
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="submit" value="Submit" >Ανέβασμα!</button>
-          <button type="button" class="btn btn-dark" data-dismiss="modal" aria-label="Close">Ακύρωση</button>
+          <button class="btn btn-outline-secondary" type="submit" value="Submit" >Upload</button>
+          <button type="button" class="btn btn-outline-dark" data-dismiss="modal" aria-label="Close">Cancel</button>
           </form>
       </div> <!-- here ends modal footer -->
     </div> <!-- here ends modal content -->

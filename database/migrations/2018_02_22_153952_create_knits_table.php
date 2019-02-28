@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostsTable extends Migration
+class CreateKnitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('knits', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->string('title');
-            $table->string('category');
-            $table->text('synopsis')->nullable();
-            $table->text('body');
-            $table->string('cover_image');
+            $table->string('name');
+            $table->text('description');
+            $table->string('category')->default('none');
+            $table->integer('price')->default(0);
+            $table->string('other')->nullable();
+            $table->string('photo');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
@@ -34,9 +35,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        Schema::dropIfExists('posts');
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
-
+        Schema::dropIfExists('knits');
     }
 }

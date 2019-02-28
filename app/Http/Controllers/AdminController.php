@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Middleware\CheckRole;
 use App\Post;
 use App\Photo;
+use App\Knit;
+use App\Comment;
 use DB;
 
 
@@ -28,6 +30,21 @@ class AdminController extends Controller
          //$photos = Photo::paginate(20);
          $posts = Post::orderBy('id', 'desc')->paginate(10);
          return view('admin.dash_posts', compact('posts'));
+     }
+
+   public function knits()
+     {
+       $knits = Knit::paginate(10);
+       return view('admin.dash_knits', compact('knits'));
+     }
+
+   public function showKnit($id)
+     {
+       $knit = Knit::find($id);
+// Transform input string to array, then reverse it so to get the main preview picture first (revertion due to iteration of comma separated values: if the array ends with a comma we will have an extra empty item)
+       $photoarray = array_reverse(explode(',',$knit->photo));
+       $comments = Comment::where('knit_id', $knit->id)->get();
+       return view('admin.dash_show_knit', compact(['comments','knit','photoarray']));
      }
 
    public function carousel()

@@ -46,6 +46,10 @@ a {
    color: $dark-brown;
  }
 
+.pointer {
+  cursor: pointer;
+}
+
 // Header
  .hidden-when-small {
    display: none;
@@ -142,7 +146,7 @@ h1,h2,h3,h4,h5,h6,p,small {
 }
 ////////////// FRONT PAGE ///////////////////
 
-// carousel
+// carousel and slides
 
 .handwriting {
   font-family: $font-family-cursive;
@@ -163,6 +167,10 @@ h1,h2,h3,h4,h5,h6,p,small {
 .carousel {
   width:800px;
   height:400px;
+}
+
+.selected {
+  border: 5px solid $dark-brown;
 }
 
 // Buttons

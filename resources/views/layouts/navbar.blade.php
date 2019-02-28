@@ -3,7 +3,7 @@
     <a class="nav-link handwriting fs-16" href="/">home <span class="sr-only">(current)</span></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link handwriting fs-16" href="#">knits<span class="sr-only">(current)</span></a>
+    <a class="nav-link handwriting fs-16" href="/knits">knits<span class="sr-only">(current)</span></a>
   </li>
   <li class="nav-item">
     <a class="nav-link handwriting fs-16" href="/posts">stitches<span class="sr-only">(current)</span></a>

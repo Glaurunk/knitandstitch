@@ -10526,6 +10526,10 @@ a:hover {
   color: #554843;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .hidden-when-small {
   display: none;
 }
@@ -10644,6 +10648,10 @@ small {
 .carousel {
   width: 800px;
   height: 400px;
+}
+
+.selected {
+  border: 5px solid #554843;
 }
 
 .but-fashion {

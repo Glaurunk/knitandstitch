@@ -23,6 +23,9 @@ class Photo extends Model
                   return $this->belongsToMany(Alboum::class);
               }
 
-
+    public function knit()
+              {
+                  return $this->belongsToMany(Knit::class);
+              }
 
 }

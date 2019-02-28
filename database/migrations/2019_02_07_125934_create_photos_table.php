@@ -19,6 +19,7 @@ class CreatePhotosTable extends Migration
             $table->string('photo');
             $table->string('title')->nullable();
             $table->string('size');
+            $table->string('dimensions');
             $table->boolean('in_carousel')->default(0);
             $table->string('description')->nullable();
 

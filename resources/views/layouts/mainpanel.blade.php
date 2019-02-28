@@ -12,8 +12,8 @@
           </tr>
           <tr>
             <td><strong>Knits</strong></td>
-            <td>New Knit</td>
-            <td>Manage Knits</td>
+            <td><a href="/knits/create">New Knit</a></td>
+            <td><a href="/admin/knits">Manage Knits</a></td>
             <td></td>
           </tr>
           <tr>

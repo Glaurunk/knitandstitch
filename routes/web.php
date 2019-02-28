@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
 
 /*
@@ -26,6 +27,7 @@ Route::resource('comments', 'CommentController');
 Route::resource('photos', 'PhotoController');
 Route::resource('alboums', 'AlboumController');
 Route::resource('users', 'UserController');
+Route::resource('knits', 'KnitController');
 
 // USER specific queries
 Route::post('/subscribe', 'UserController@toggleSubscription');
@@ -45,6 +47,8 @@ Route::get('/search', 'PagesController@display_search' );
 Route::post('/search', 'PagesController@search');
 
 //DASHBOARD
+Route::get('/admin/knits', 'AdminController@knits');
+Route::get('admin/knits/{id}', 'AdminController@showKnit');
 Route::get('/admin', 'AdminController@dashboard')->name('dashboard');
 Route::get('/admin/posts', 'AdminController@posts');
 Route::get('/carousel', 'AdminController@carousel');

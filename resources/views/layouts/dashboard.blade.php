@@ -34,8 +34,8 @@
           Knits
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownKnits">
-          <a class="dropdown-item" href="#">New Knit</a>
-          <a class="dropdown-item" href="#">Manage Knits</a>
+          <a class="dropdown-item" href="/knits/create">New Knit</a>
+          <a class="dropdown-item" href="/admin/knits">Manage Knits</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -61,7 +61,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Users</a>
+        <a class="nav-link" href="/users">Users</a>
       </li>
     </ul>
   @endif

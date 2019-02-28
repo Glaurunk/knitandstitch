@@ -17,4 +17,9 @@ class Comment extends Model
             {
                 return $this->belongsTo(Post::class);
             }
+
+  public function knit()
+            {
+                return $this->belongsTo(Knit::class);
+            }
 }

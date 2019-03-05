@@ -10629,6 +10629,30 @@ small {
   list-style-type: none;
 }
 
+.br-12 {
+  border-radius: 12px;
+}
+
+.cookie-consent {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+  text-align: center;
+  background-color: #f1e7db;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.cookie-consent__agree {
+  background-color: #554843;
+  color: #f1e7db;
+  padding: 8 20;
+  border-radius: 12px;
+  cursor: pointer;
+  float: right;
+}
+
 .handwriting {
   font-family: "Noteworthy", cursive;
 }
@@ -10645,13 +10669,35 @@ small {
   border-width: 12px 0px 12px 0px;
 }
 
-.carousel {
-  width: 800px;
-  height: 400px;
+.lightbox {
+  -webkit-animation: fadein 3s;
+  animation: fadein 3s;
 }
 
 .selected {
   border: 5px solid #554843;
+  -webkit-animation: fadein 1s;
+  animation: fadein 1s;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .but-fashion {

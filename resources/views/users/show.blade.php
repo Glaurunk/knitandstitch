@@ -43,6 +43,10 @@
               <td></td>
             </tr>
             <tr>
+              <td>Comments: <strong>{{ count($user->comments) }}</strong></td>
+              <td></td>
+            </tr>
+            <tr>
               <td>@if ($user->has_subscription)
                 Subscriber: <strong>YES</strong>
                 @else

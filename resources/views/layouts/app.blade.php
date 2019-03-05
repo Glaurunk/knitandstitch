@@ -1,4 +1,3 @@
-{{-- @include('layouts.if-login') --}}
 
 @include('layouts.header')
 
@@ -10,4 +9,4 @@
 
 @include('layouts.footer')
 
-{{-- @include('cookieConsent::index') --}}
+@include('cookieConsent::index')

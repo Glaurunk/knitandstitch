@@ -34,7 +34,7 @@ Route::post('/subscribe', 'UserController@toggleSubscription');
 
 // POSTS specific queries
 Route::get('/fashion', 'PagesController@fashion')->name('fashion');
-Route::get('/self_care', 'PagesController@self_care')->name('self_care');
+Route::get('/self-care', 'PagesController@self_care')->name('self_care');
 Route::get('/my house', 'PagesController@my_house')->name('my_house');
 Route::get('/inspiration', 'PagesController@inspiration')->name('inspiration');
 

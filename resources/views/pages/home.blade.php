@@ -6,12 +6,12 @@
 <div class="content my-5">
 
 <!-- Knits Section with carousel -->
-  <h1 class="handwriting text-center">latest knits!</h3>
+  <h1 class="handwriting text-center"><a href="/knits">latest knits!</a></h3>
     @include('layouts.carousel')
 </div> <!-- here ends content -->
 
 <!-- Stitches Section -->
-<h1 class="handwriting text-center">latest stitches!</h3>
+<h1 class="handwriting text-center"><a href="/posts">latest stitches!</a></h3>
 <!-- Buttons row -->
 <div class="row flex-row justify-content-center mt-5">
   <div class="col-auto">

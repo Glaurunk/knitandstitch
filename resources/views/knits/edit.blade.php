@@ -42,37 +42,40 @@
           <input type="text" class="form-control" name="price" value="{{ $knit->price }}">
       </div>
 
-<!-- Enter from URL part for Main Picture -->
-      @php
-        $main = array_reverse(explode(',',$knit->photo))[0];
-        $in_array = array_reverse(explode(',',$knit->photo));
-        $in_gallery = array_shift($in_array);
-      @endphp
-      <div class="form-group">
-          <p style="color:black;">Main Picture Preview</p>
-          <img name="img" class="img-fluid" id="cover" alt="cover" src="/gallery/{{ $main }}" style="max-width:200px;">
-          <p id="photoPath" class="py-2">{{ $main }}</p>
-          <input type="hidden" name="photo" value="" id="inputField">
-      </div>
+      <!-- Enter from URL part for Main Picture -->
+            <div class="form-group">
+                <p style="color:black;">Main Picture Preview</p>
+                <img name="img" class="img-fluid" id="cover" alt="cover" src="/gallery/{{ $knit->photo }}" style="max-width:200px;">
+                <p id="photoPath" class="py-2">{{ $knit->photo }}</p>
+                <input type="hidden" name="photo" value="{{ $knit->photo }}" id="inputField">
+            </div>
 
-<!-- Enter from URL part for Slides -->
-      <div class="form-group mb-5">
-          <p style="color:black;">Knit Image Gallery</p>
-          <table id ="gallery" class="mb-5">
-            <tr id="row">
-              @foreach ($in_array as $photo)
-                <td id="{{ $photo }}"><img class="mr-2 mb-3 pointer" id="{{ $photo}}" alt="slide" src="/gallery/{{ $photo }}" style="max-width:150px;" onclick="removeGallery(this.id)">
-                  <br>
-                  {{ $photo }}
-                  <br>
-                  <small>click on image to remove</small>
-                </td>
-              @endforeach
-            </tr>
-          </table>
-          <button type="button" class="btn btn-outline-danger bt-3" data-toggle="modal" data-target="#inputForm">Add an image OR copy an image URL to the Clipboard</button><br>
-          <input type="hidden" name="photo_array" value="" id="inputGallery">
-      </div>
+      <!-- Enter from URL part for Slides -->
+      @php
+        $others = explode(',', $knit->other);
+        array_pop($others);
+      @endphp
+
+            <div class="form-group mb-5">
+                <p style="color:black;">Knit Image Gallery</p>
+                @if (count($others) != 0)
+                  <table id ="gallery" class="mb-5">
+                    <tr id="row">
+                      @foreach ($others as $other)
+                          <td id="{{ $other }}" onclick="removeGallery(this.id)">
+                            <img src="/gallery/{{ $other }}" alt="picture" style=" height:120px; width: 150px;">
+                            <p class="mt-2">{{ $other }}</p>
+                            <small>click on image to remove</small>
+                          </td>
+                      @endforeach
+                    </tr>
+                  </table>
+                @else
+                <p><em>No additional images selected</em></p>
+              @endif
+                <button type="button" class="btn btn-outline-danger bt-3" data-toggle="modal" data-target="#inputForm">Add an image OR copy an image URL to the Clipboard</button><br>
+                <input type="hidden" name="photo_array" value="{{ $knit->other }}" id="inputGallery">
+            </div>
 
 <!-- Modal -->
         <div class="modal fade bd-example-modal-lg" id="inputForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

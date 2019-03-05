@@ -49,8 +49,8 @@ class PagesController extends Controller
 // CATEGORIES
       public function fashion()
                 {
-                  $posts = DB::table('posts')
-                      ->orderBy('id', 'desc')
+
+                  $posts = Post::orderBy('id', 'desc')
                       ->where('category', 'fashion')
                       ->paginate(10);
                   return view('posts.posts_category')
@@ -60,8 +60,7 @@ class PagesController extends Controller
 
       public function self_care()
                 {
-                  $posts = DB::table('posts')
-                      ->orderBy('id', 'desc')
+                  $posts = Post::orderBy('id', 'desc')
                       ->where('category', 'self-care')
                       ->paginate(10);
                   return view('posts.posts_category')
@@ -71,8 +70,7 @@ class PagesController extends Controller
 
       public function my_house()
                 {
-                  $posts = DB::table('posts')
-                      ->orderBy('id', 'desc')
+                  $posts = Post::orderBy('id', 'desc')
                       ->where('category', 'my house')
                       ->paginate(10);
                   return view('posts.posts_category')
@@ -82,8 +80,7 @@ class PagesController extends Controller
 
       public function inspiration()
                 {
-                  $posts = DB::table('posts')
-                      ->orderBy('id', 'desc')
+                  $posts = Post::orderBy('id', 'desc')
                       ->where('category', 'inspiration')
                       ->paginate(10);
                   return view('posts.posts_category')

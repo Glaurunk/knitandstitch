@@ -5,7 +5,7 @@
 <div class="container py-3 mb-5" id="top">
   <div class="row justify-content-center">
       <div class="col-md">
-          <div class="card indigo">
+          <div class="card moccha">
               <div class="card-header grey text-center fs-20">Carousel Panel</div>
                 <div class="card-body">
 
@@ -44,7 +44,7 @@
 
 
 <!-- Here start buttons -->
-      <div class="card my-2">
+      <div class="card my-2 moccha">
         <button class="btn btn-outline-danger" data-toggle="modal" data-target="#insert">Add image to the Carousel</button>
       </div>
 

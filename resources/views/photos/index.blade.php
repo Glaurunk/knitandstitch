@@ -15,6 +15,7 @@
             <tr>
               <th scope="col">Preview</th>
               <th scope="col">Title</th>
+              <th scope="col">Uploaded on</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
@@ -26,6 +27,7 @@
             <tr>
               <th scope="row"><a href="/photos/{{ $photo->id }}"><img src="/gallery/{{ $photo->photo }}" alt="cover" style="max-width:120px;"></a></th>
               <td>{{ $photo->title }}</td>
+              <td>{{ $photo->created_at }}</td>
               <td>
                 <div class="row align-self-start">
                   <form class="" action="/photos/{{ $photo->id}}" method="post">

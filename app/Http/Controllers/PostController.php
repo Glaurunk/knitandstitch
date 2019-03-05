@@ -22,7 +22,9 @@ class PostController extends Controller
 
     public function index()
     {
-      $posts = Post::orderBy('id', 'desc')->paginate(10);
+      $posts = Post::where('id', '!=', '0')
+        ->orderBy('id', 'desc')
+        ->paginate(10);
       return view('posts.index', compact('posts'));
     }
 
@@ -68,9 +70,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
       $comments = Comment::where('post_id', $post->id)->get();
-      $photoarray = $comments->photo;
-      return $photos = explode(',',$photoarray);
-      return view('posts.show', compact(['post','comments','photos']));
+      return view('posts.show', compact(['post','comments']));
     }
 
 
@@ -111,6 +111,10 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
+      if ($post->id == "0")
+      {
+        return redirect()->back()->with('error', 'Sorry, you can not do that!');
+      }
       $comments = Comment::where('post_id', $post->id)->delete();
       $post->delete();
       return redirect()->back()->with('success', 'The stitch has been deleted along with all its comments.');

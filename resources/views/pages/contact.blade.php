@@ -3,7 +3,7 @@
 @section('title', 'Contact Me')
 
 @section('content')
-  <h1 class="handwriting py-5">Contact me</h1>
+  <h1 class="handwriting py-5 text-center">Contact me</h1>
   <div class="row p-2 mb-5">
     <div class="col ml-5">
       <img src="{{ url('/images/batmail.png')}}" alt="batmail" class="img-fluid">

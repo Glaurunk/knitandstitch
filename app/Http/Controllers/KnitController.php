@@ -22,7 +22,9 @@ class KnitController extends Controller
      */
     public function index()
     {
-      $knits = Knit::paginate(10);
+      $knits = Knit::where('id', '!=', '0')
+        ->orderBy('created_at', 'desc')
+        ->paginate(10);
       return view('knits.index', compact('knits'));
     }
 
@@ -58,7 +60,7 @@ class KnitController extends Controller
       $knit->category = 'none';
       $knit->price = $request->input('price');
       $knit->photo = $request->input('photo');
-      $knit->other = explode(',',$request->input('other');
+      $knit->other = $request->input('photo_array');
       $knit->save();
 
       return redirect('/admin/knits')->with('You have added a new knit to your collection!');
@@ -72,7 +74,8 @@ class KnitController extends Controller
      */
     public function show(Knit $knit)
     {
-        //
+        $comments = Comment::where('knit_id', $knit->id)->get();
+        return view('knits.show', compact('knit', 'comments'));
     }
 
     /**
@@ -96,7 +99,28 @@ class KnitController extends Controller
      */
     public function update(Request $request, Knit $knit)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'body' => 'required',
+        ]);
+
+        $knit->name = $request->input('title');
+        $knit->description = $request->input('body');
+        $knit->category = 'none';
+        $knit->price = $request->input('price');
+  //      dd($knit);
+        if ($request->input('photo') != '')
+        {
+          $knit->photo = $request->input('photo');
+        }
+        if ($request->input('photo_array') != '')
+        {
+          $knit->other = $request->input('photo_array');
+        }
+
+        $knit->save();
+
+        return redirect('/admin/knits')->with('You have successfully edited your knit!');
     }
 
     /**
@@ -107,6 +131,10 @@ class KnitController extends Controller
      */
     public function destroy(Knit $knit)
     {
+        if ($Knit->id == "0")
+        {
+          return redirect()->back()->with('error', 'Sorry, you can not do that!');
+        }
         $comments = Comment::where('knit_id', $knit->id)->delete();
         $knit->delete();
         return redirect('/admin/knits')->with('success', 'The knit has been deleted.');

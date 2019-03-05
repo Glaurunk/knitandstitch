@@ -85,7 +85,12 @@
 
 <div class="row">
   <div class="align-self-end">
-    <a href="/posts" class="btn btn-outline-dark btn-sm mx-3">back</a>
+    <a href="{{ URL::previous() }}
+" class="
+      @if (Auth::user())
+        btn btn-outline-dark btn-sm
+      @endif
+    mx-3">back</a>
   </div>
 <!-- Create button for authenticated user -->
   @if (Auth::user())
@@ -112,6 +117,7 @@
           {{ csrf_field() }}
           <textarea name="body" class="form-control" placeholder="" id="commentsArea">{{ old('body') }}</textarea>
           <input type="hidden" name="post_id" value="{{ $post->id }}">
+          <input type="hidden" name="knit_id" value="0">
       </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-outline-danger">Submit</button>

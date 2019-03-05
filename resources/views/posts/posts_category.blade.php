@@ -18,6 +18,13 @@
                       <h4 class="handwriting"><a href="/posts/{{ $post->id }}">{{ $post->title }}</a></h4>
                       <small class="font-italic pt-2 pb-3">{{ $post->created_at }}</small>
                       <p class="mt-3">{{ $post->synopsis }}</p>
+                      @if (count($post->comments) > 0)
+                        @if (count($post->comments) == 1)
+                          <p class="text-right"><em>{{ count($post->comments) }} comment</em></p>
+                        @else
+                          <p class="text-right"><em>{{ count($post->comments) }} comments</em></p>
+                        @endif
+                      @endif
                 </div> <!-- here ends col -->
               </div> <!-- here ends row -->
             </div> <!-- here ends card-block -->

@@ -41,6 +41,7 @@ function  addToCarousel(name) {
 
 // put selected thumbnail to preview and add selected class in order to place border
 function preview(path, name) {
+
   document.getElementById('lightbox').src = path;
   var els = document.getElementsByClassName('slides');
     for (var i = 0; i < els.length; i++)
@@ -62,7 +63,7 @@ function addPhoto(photo) {
   elem.setAttribute("width", "150");
   elem.setAttribute("class", "mr-2 mb-3");
   elem.src = '/gallery/'+photo;
-  cell1.setAttribute("id", "{{ $photo }}");
+  cell1.setAttribute("id", photo);
   cell1.setAttribute("onclick", "removeGallery(this.id)");
   cell1.appendChild(elem);
   cell1.innerHTML += "<br>"+photo+"<br><small>click on image to remove</small>";
@@ -76,6 +77,8 @@ function addPhoto(photo) {
 function removeGallery(photo) {
 
   var el = document.getElementById(photo);
-  document.getElementById('inputGallery').value -= photo+',';
+  var old_value = document.getElementById('inputGallery').value;
+  var new_value = old_value.replace(photo+",", "");
+  document.getElementById('inputGallery').value = new_value;
   el.remove();
 }

@@ -51,6 +51,7 @@ class CommentController extends Controller
         $comment->body = $request->input('body');
         $comment->user_id = Auth::user()->id;
         $comment->post_id = $request->input('post_id');
+        $comment->knit_id = $request->input('knit_id');
         $comment->save();
 
         return redirect()->back()->with('success', 'Your comment has been published!');

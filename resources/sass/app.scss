@@ -144,9 +144,33 @@ h1,h2,h3,h4,h5,h6,p,small {
 .list-style-no-style {
   list-style-type: none;
 }
-////////////// FRONT PAGE ///////////////////
 
+// Styling
+
+.br-12 {
+  border-radius: 12px;
+}
+////////////// FRONT PAGE ///////////////////
+// Cookie Consent
+.cookie-consent {
+  position:fixed;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+  text-align: center;
+  background-color: $crem;
+  padding: 10px;
+  border-radius: 8px;
+}
 // carousel and slides
+.cookie-consent__agree {
+  background-color: $dark-brown;
+  color: $crem;
+  padding: 8 20;
+  border-radius: 12px;
+  cursor: pointer;
+  float: right;
+}
 
 .handwriting {
   font-family: $font-family-cursive;
@@ -164,13 +188,20 @@ h1,h2,h3,h4,h5,h6,p,small {
   border-width: 12px 0px 12px 0px;
 }
 
-.carousel {
-  width:800px;
-  height:400px;
+.lightbox {
+  -webkit-animation: fadein 3s;
+  animation: fadein 3s;
 }
 
 .selected {
   border: 5px solid $dark-brown;
+  -webkit-animation: fadein 1s;
+  animation: fadein 1s;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 // Buttons

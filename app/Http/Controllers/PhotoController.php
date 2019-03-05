@@ -22,7 +22,7 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        $photos = Photo::paginate(10);
+        $photos = Photo::orderBy('created_at', 'desc')->paginate(10);
         return view ('photos.index', compact('photos'));
     }
 

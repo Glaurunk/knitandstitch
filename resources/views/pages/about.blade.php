@@ -5,7 +5,7 @@
 @section('content')
 
 
-  <h1 class="handwriting py-5 ">About Me</h1>
+  <h1 class="handwriting py-5 text-center">About Me</h1>
   <div class="row">
       <img src="{{ url('/images/Marinaki.png') }}" alt="Marina" class="img-fluid rounded mx-auto ">
 

@@ -57,3 +57,6 @@ Route::post('/removefromcarousel', 'AdminController@removeFromCarousel');
 
 // AUTHENTICATION
 Auth::routes();
+
+// VERIFICATION
+Auth::routes(['verify' => true]);

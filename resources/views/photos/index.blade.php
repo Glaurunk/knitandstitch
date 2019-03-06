@@ -7,7 +7,7 @@
   <div class="">
     <div class=" card-body moccha my-3">
 
-        <table class="table table-hover">
+        <table class="table table-hover table-responsive-md">
           <a href="{{ url('photos/create') }}" class="btn btn-outline-dark btn-sm" data-toggle="modal" data-target="#uploadPicture">Add New</a>
           <h3 class="text-center py-3">
             Images Catalogue</h3>

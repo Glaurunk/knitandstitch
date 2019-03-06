@@ -101,7 +101,24 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-      //
+      $user = User::find($id);
+
+      if (Auth::user()->role == 'admin')
+      {
+        $user->delete();
+        return redirect('/users')->with('success', 'You have successfully deleted '.$user->email.' from the catalogue.');
+      }
+
+      if (Auth::user()->id == $user->id)
+      {
+        $user->delete();
+        return redirect('/')->with('success', 'You have deleted your account.Feel free to return at any time!');
+      }
+      else
+      {
+        return redirect()->back()->with('error', 'You do not have permission to do that!');
+      }
+
     }
 
     public function toggleSubscription(Request $request)

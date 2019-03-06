@@ -1,5 +1,5 @@
 <div class="row mt-4 pb-5 justify-content-center">
-      <div id="carouselExampleIndicators" class="carousel" data-ride="carousel">
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           @php
             $i=0;
@@ -23,11 +23,11 @@
         @foreach ($in_carousels as $carousel_item)
           @if ($j == 0)
             <div class="carousel-item active">
-              <img class="d-block w-100 carousel slider" src="/gallery/{{ $carousel_item->photo }}?auto=yes&bg=777&fg=555&text=First slide" alt="slide">
+              <img class="d-block w-100" src="/gallery/{{ $carousel_item->photo }}?auto=yes&bg=777&fg=555" alt="slide">
             </div>
           @else
             <div class="carousel-item">
-            <img class="d-block w-100 carousel slider" src="/gallery/{{ $carousel_item->photo }}?auto=yes&bg=777&fg=555&text=First slide" alt="slide">
+            <img class="d-block w-100" src="/gallery/{{ $carousel_item->photo }}?auto=yes&bg=777&fg=555" alt="slide">
           </div>
             @endif
             @php

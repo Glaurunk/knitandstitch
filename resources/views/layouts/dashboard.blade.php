@@ -85,6 +85,10 @@
           </a>
 
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              @if (Auth::user()->role == 'user')
+              <a class="dropdown-item" href="/users/{{ Auth::user()->id }}">My Profile
+              </a>
+              @endif
               <a class="dropdown-item" href="{{ route('logout') }}"
                  onclick="event.preventDefault();
                                document.getElementById('logout-form').submit();">

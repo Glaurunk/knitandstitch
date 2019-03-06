@@ -27,10 +27,22 @@
               </td>
             </tr>
             <tr>
-              <td>Email: <strong>{{ $user->email }}</strong></td>
+              <td>Email: <strong>
+                @if ($user->email_verified_at != '' and Auth::user()->role == 'admin')
+                <a href="mailto:{{ $user->email }}">
+                @endif
+                  {{ $user->email }}</a></strong>
+                @if ($user->email_verified_at == '')
+                  <em><span class="text-red">Pending verification</span></em>
+                  @else
+                  <em><span class="text-red">Verified!</span></em>
+                @endif
+              </td>
               <td>
-                @if ($user->id != Auth::user()->id)
-                  <a href="mailto:{{ $user->email }}" class="btn btn-sm btn-outline-warning">Email user</a>
+                @if ($user->email_verified_at == '' and Auth::user()->id == $user->id)
+                  <a href="/email/verify" class="btn btn-sm btn-outline-secondary" data-toggle="tooltip" title="Verify your email in order to post comments and recieve our newsletter!">Verify Email</a>
+                @else
+                  <strong class="text-red"></strong>
                 @endif
               </td>
             </tr>
@@ -57,7 +69,7 @@
                   <form class="form" action="/subscribe" method="post">
                     {{ csrf_field() }}
                     <input type="hidden" name="user_id" value="{{ $user->id }}">
-                    <button type="submit" class="btn btn-sm btn-outline-danger ">Toggle Subscription</button>
+                    <button type="submit" class="btn btn-sm btn-outline-secondary ">Toggle Subscription</button>
                   </form>
                 @endif
               </td>
@@ -74,7 +86,7 @@
             <button type="submit" class="btn btn-outline-danger float-right" onclick="confirmDelete()"data-toggle="tooltip" data-placement="top" title="This action will also remove all user comments from all posts!">Delete Profile</button>
           </form>
           @if (Auth::user()->role == 'admin')
-          <a href="{{ url('/admin')}}">back to dashboard</a>
+          <a href="{{ url('/users')}}">back to users</a>
           @endif
         </div>
     </div>

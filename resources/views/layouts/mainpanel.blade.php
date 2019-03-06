@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('content')
-      <table class="table table-striped">
+      <table class="table table-striped table-responsive-md">
         <tbody>
           <tr>
             <td><strong>Stitches</strong></td>

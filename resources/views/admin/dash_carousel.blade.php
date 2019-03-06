@@ -11,8 +11,8 @@
 
 @include('layouts.carousel')
 
-  <table class="table mb-5" id="carouselTable">
-    <h3 class="pt-5">Carousel Slides</h3>
+  <table class="table mb-5 table-responsive-md" id="carouselTable">
+    <h3 class="text-center">Carousel Slides</h3>
     <thead>
       <tr>
         <th scope="col-2">Preview</th>

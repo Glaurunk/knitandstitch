@@ -5,4 +5,4 @@
 <p>The blog is in its final stages but quite not finished yet. However only some texts and finishing touches remain, so you get a pretty close idea of the final outcome.</p>
 <p>feel free to comment and point out any bad practices or mistakes; I'll be happy to learn something new!</p>
 
-<p><em>Stathis Andreou @ <a href=""https://deepseacoding.com"</a></em></p>
+<p><em>Stathis Andreou @ <a href=""https://deepseacoding.com">deepSeaCoding.com</a></em></p>
